@@ -190,9 +190,6 @@ export default {
             }
         }
     },
-    created() {
-        this.initAjax()
-    },
     methods: {
         paginationChange(pagination, filters, sorter) {
             console.log('params', pagination, filters, sorter)
