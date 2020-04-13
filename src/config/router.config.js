@@ -171,12 +171,6 @@ export const asyncRouterMap = [
                         meta: { title: '业主入住', keepAlive: true, permission: ['dashboard'] }
                     },
                     {
-                        path: 'complaint',
-                        name: 'complaint',
-                        component: () => import('@/views/owner/complaint'),
-                        meta: { title: '业主投诉', keepAlive: true, permission: ['dashboard'] }
-                    },
-                    {
                         path: 'management',
                         name: 'management',
                         component: () => import('@/views/owner/management'),

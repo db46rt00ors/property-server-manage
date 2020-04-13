@@ -18,8 +18,8 @@
         <div>
           <h1 class="housinginformation-header">查看 第1栋 楼宇信息</h1>
           <!-- <housinginformation></housinginformation> -->
-          <!-- <buildinginformation></buildinginformation> -->
-          <unitinformation></unitinformation>
+          <buildinginformation></buildinginformation>
+          <!-- <unitinformation></unitinformation> -->
         </div>
       </a-col>
     </a-row>

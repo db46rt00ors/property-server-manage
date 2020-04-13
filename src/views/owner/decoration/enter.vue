@@ -92,7 +92,7 @@
 import _ from 'lodash'
 import mockjs2 from 'mockjs2'
 import add from './enter-add/add'
-import myTable from './components/myTable'
+import myTable from '@/components/myTable/myTable'
 const columns = [
     {
         align: 'center',
