@@ -240,6 +240,7 @@ export default {
             console.log('params', pagination, filters, sorter)
         },
         showAddModal() {
+            debugger
             this.visibleObj.addvisible = true
         },
         showImportExcelModal() {

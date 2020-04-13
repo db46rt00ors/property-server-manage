@@ -194,6 +194,7 @@ export default {
                     delete loginParams.username
                     loginParams[!state.loginType ? 'email' : 'username'] = values.username
                     loginParams.password = md5(values.password)
+                    console.log(loginParams, 'loginParams')
                     Login(loginParams)
                         .then(res => this.loginSuccess(res))
                         .catch(err => this.requestFailed(err))
@@ -279,6 +280,7 @@ export default {
             this.isLoginError = false
         },
         requestFailed(err) {
+          console.log(err)
             this.isLoginError = true
             this.$notification['error']({
                 message: '错误',

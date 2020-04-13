@@ -107,6 +107,22 @@
           <a-col :span="10">
             <a-form-model-item label="天发送短信/微信" :colon="false"></a-form-model-item>
           </a-col>
+          <a-col :span="6">
+            <a-form-model-item label="续费提醒" :labelCol="{span: 12}" :wrapperCol="{span: 10}">
+              <a-radio-group v-model="form.resource">
+                <a-radio value="1">是</a-radio>
+                <a-radio value="0">否</a-radio>
+              </a-radio-group>
+            </a-form-model-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-model-item label="从未收取的缴费限期前 " :colon="false" :labelCol="{span: 8}" :wrapperCol="{span: 16}">
+              <a-input placeholder="Basic usage" />
+            </a-form-model-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-model-item label="天发送短信/微信" :colon="false"></a-form-model-item>
+          </a-col>
         </a-row>
       </a-form-model>
       <template slot="footer">

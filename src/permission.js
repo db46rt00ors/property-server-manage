@@ -27,10 +27,12 @@ router.beforeEach((to, from, next) => {
           .dispatch('GetInfo')
           .then(res => {
             const roles = res.result && res.result.role
+            console.dir(roles)
             store.dispatch('GenerateRoutes', { roles }).then(() => {
               // 根据roles权限生成可访问的路由表
               // 动态添加可访问路由表
               router.addRoutes(store.getters.addRouters)
+              console.log(store.getters.addRouters)
               // 请求带有 redirect 重定向时，登录自动重定向到该地址
               const redirect = decodeURIComponent(from.query.redirect || to.path)
               if (to.path === redirect) {
