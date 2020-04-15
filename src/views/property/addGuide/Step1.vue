@@ -10,10 +10,11 @@
             :wrapperCol="wrapperCol"
           >
             <a-select v-model="form.affiliates">
-              <a-select-option value="1">海淀子公司</a-select-option>
-              <a-select-option value="2">朝阳子公司</a-select-option>
-              <a-select-option value="3">宣武子公司</a-select-option>
-              <a-select-option value="4">大兴子公司</a-select-option>
+              <a-select-option
+                :value="index"
+                v-for="(item, index) in select"
+                :key="index"
+              >{{ item }}</a-select-option>
             </a-select>
           </a-form-model-item>
         </a-col>
@@ -128,10 +129,13 @@
 </template>
 
 <script>
+import { oneStep } from '@/api/property'
+
 export default {
     name: 'Step1',
     data() {
         return {
+            select: [],
             labelCol: { lg: { span: 6 }, sm: { span: 4 } },
             wrapperCol: { lg: { span: 16 }, sm: { span: 20 } },
             form: {
@@ -158,18 +162,31 @@ export default {
             }
         }
     },
+    created() {
+        var arr = ['海淀子公司', '海淀子公司', '海淀子公司3', '海淀子公司99']
+        this.select = arr
+    },
     methods: {
         nextStep() {
-            this.$refs.ruleForm.validate(valid => {
-                if (valid) {
-                    // alert('submit!')
-                    this.$emit('nextStep')
-                    // console.log(this.form)
-                } else {
-                    console.log('error submit!!')
-                    return false
-                }
-            })
+            oneStep({ a: 9 })
+            // this.$refs.ruleForm.validate(valid => {
+            //     if (valid) {
+            //         alert('submit!')
+            //         const random = Math.random()
+            //         if (random > 0.5) {
+            //             // this.$emit('nextStep')
+            //         } else {
+            //             this.$notification.error({
+            //                 message: 'error',
+            //                 description: '123',
+            //                 duration: 1
+            //             })
+            //         }
+            //     } else {
+            //         console.log('error submit!!')
+            //         return false
+            //     }
+            // })
         },
         resetForm() {
             this.$refs.ruleForm.resetFields()
