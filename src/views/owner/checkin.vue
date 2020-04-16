@@ -10,9 +10,7 @@
             </a-select>
           </a-form-model-item>
 
-          <ul class="mytree">
-            <mytree class="item" :item="treeData"></mytree>
-          </ul>
+          <MyTree :treeData="treeData"></MyTree>
         </a-col>
         <a-col :span="18">
           <div>
@@ -42,7 +40,8 @@
 </template>
 
 <script>
-import mytree from './mytree/mytree'
+import MyTree from '@/components/MyTree'
+
 export default {
     data() {
         return {
@@ -116,7 +115,7 @@ export default {
         }
     },
     components: {
-        mytree
+        MyTree
     }
 }
 </script>
@@ -126,8 +125,5 @@ export default {
     background-color: #fff;
     padding: 20px;
     min-height: 500px;
-}
-.mytree {
-    margin-top: 15px;
 }
 </style>

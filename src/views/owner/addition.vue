@@ -16,9 +16,7 @@
             </a-select>
           </a-form-model-item>
 
-          <ul class="mytree">
-            <mytree class="item" :item="treeData"></mytree>
-          </ul>
+          <MyTree :treeData="treeData"></MyTree>
         </a-col>
         <a-col :span="18">
           <div>
@@ -66,7 +64,7 @@
 </template>
 
 <script>
-import mytree from './mytree/mytree'
+import MyTree from '@/components/MyTree'
 export default {
     data() {
         return {
@@ -84,7 +82,7 @@ export default {
                 time: [{ required: true, message: '加建时间必须填写', trigger: 'blur' }]
             },
             treeData: {
-                name: '121小区',
+                name: '666小区',
                 children: [
                     {
                         name: '第一栋',
@@ -142,7 +140,7 @@ export default {
         }
     },
     components: {
-        mytree
+        MyTree
     }
 }
 </script>

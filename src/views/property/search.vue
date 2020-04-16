@@ -10,9 +10,7 @@
             </a-select>
           </a-form-model-item>
         </a-form-model>
-        <ul class="mytree">
-          <mytree class="item" :item="treeData"></mytree>
-        </ul>
+        <MyTree :treeData="treeData"></MyTree>
       </a-col>
       <a-col :span="20">
         <div>
@@ -27,7 +25,7 @@
 </template>
 
 <script>
-import mytree from './mytree/mytree'
+import MyTree from '@/components/MyTree'
 import housinginformation from './searchComp/housinginformation'
 import buildinginformation from './searchComp/buildinginformation'
 import unitinformation from './searchComp/unitinformation'
@@ -35,7 +33,7 @@ export default {
     data() {
         return {
             treeData: {
-                name: 'XXX小区',
+                name: 'XXX小区1s',
                 children: [
                     {
                         name: '第一栋',
@@ -104,7 +102,7 @@ export default {
         }
     },
     components: {
-        mytree,
+        MyTree,
         housinginformation,
         buildinginformation,
         unitinformation
@@ -117,8 +115,5 @@ export default {
     background-color: #fff;
     padding: 20px 0;
     min-height: 500px;
-}
-.mytree {
-    margin-top: 15px;
 }
 </style>
