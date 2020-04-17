@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import { oneStep } from '@/api/property'
+import { oneStep } from '@/api/login'
 
 export default {
     name: 'Step1',

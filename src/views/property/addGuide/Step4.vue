@@ -10,10 +10,8 @@
       <a-select v-model="form2.region">
         <a-select-option value="1">1</a-select-option>
         <a-select-option value="2">2</a-select-option>
-      </a-select>
-      建筑面积:
-      <a-input style="width: 40px;padding: 0;text-align: center;"></a-input>
-      使用面积:
+      </a-select>建筑面积:
+      <a-input style="width: 40px;padding: 0;text-align: center;"></a-input>使用面积:
       <a-input style="width: 40px;padding: 0;text-align: center;"></a-input>
     </a-row>
     <a-row>
@@ -54,7 +52,8 @@
         </template>
       </a-table>
       <a-row>
-        <a-button type="primary" @click="nextStep()">下一步</a-button>
+        <a-button type="primary" @click="nextStep()">下一步</a-button>&nbsp;
+        <a-button type="primary" @click="prevStep()">上一步</a-button>
       </a-row>
     </a-row>
   </div>
@@ -144,7 +143,7 @@ export default {
             console.log(33)
         },
         prevStep() {
-            // this.$emit('prevStep')
+            this.$emit('prevStep')
         },
         handleChange(value, key, column) {
             const newData = [...this.data]

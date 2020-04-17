@@ -1,12 +1,8 @@
 <template>
   <div>
-    <a-form style="margin: 40px auto 0;">
-      <result title="操作成功" :is-success="true" description="请到查看中查询" style="max-width: 560px;">
-        <!-- <div slot="action">
-          <a-button type="primary" @click="finish">再转一笔</a-button>
-          <a-button style="margin-left: 8px" @click="toOrderList">查看账单</a-button>
-        </div>-->
-      </result>
+    <a-form style="margin: 40px auto 0;" align="center">
+      <result title="操作成功" :is-success="true" description="请到查看中查询" style="max-width: 560px;"></result>
+      <a-button type="primary" @click="finish">完成</a-button>
     </a-form>
   </div>
 </template>
@@ -25,9 +21,6 @@ export default {
     methods: {
         finish() {
             this.$emit('finish')
-        },
-        toOrderList() {
-            // this.$router.push('/list/table-list')
         }
     }
 }

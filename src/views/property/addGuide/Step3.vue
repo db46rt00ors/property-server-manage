@@ -57,7 +57,8 @@
         </template>
       </a-table>
       <a-row>
-        <a-button type="primary" @click="nextStep()">下一步</a-button>
+        <a-button type="primary" @click="nextStep()">下一步</a-button>&nbsp;
+        <a-button type="primary" @click="prevStep()">上一步</a-button>
       </a-row>
     </a-row>
   </div>
@@ -66,7 +67,6 @@
 <script>
 const columns = [
     {
-        // 楼宇编码	单元编码	单元名称	开始楼层	结束楼层	开始房号	结束房号
         align: 'center',
         title: '楼宇编码',
         dataIndex: 'housecode',
@@ -171,7 +171,7 @@ export default {
             this.$emit('nextStep')
         },
         prevStep() {
-            // this.$emit('prevStep')
+            this.$emit('prevStep')
         },
         handleChange(value, key, column) {
             const newData = [...this.data]

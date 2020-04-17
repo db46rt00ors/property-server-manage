@@ -55,7 +55,8 @@
         </template>
       </a-table>
       <a-row>
-        <a-button type="primary" @click="nextStep()">下一步</a-button>
+        <a-button type="primary" @click="nextStep()">下一步</a-button>&nbsp;
+        <a-button type="primary" @click="prevStep()">上一步</a-button>
       </a-row>
     </a-row>
   </div>
@@ -185,12 +186,15 @@ export default {
             // timer: 0
         }
     },
+    created() {
+        console.log(this)
+    },
     methods: {
         nextStep() {
             this.$emit('nextStep')
         },
         prevStep() {
-            // this.$emit('prevStep')
+            this.$emit('prevStep')
         },
         handleChange(value, key, column) {
             const newData = [...this.data]
