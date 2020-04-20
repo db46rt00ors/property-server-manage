@@ -1,15 +1,17 @@
 <template>
   <div>
     <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="data">
-      <a slot="name" slot-scope="text">{{ text }}</a>
+      <a slot="affiliates" slot-scope="text, recored" @click="edit(recored)">{{ text }}</a>
       <template slot="operation" slot-scope="text, record">
         <a href="javascript:;" @click="seemqintain(text, record)">查看楼宇</a>
       </template>
     </a-table>
+    <house-edit :editObj="editObj"></house-edit>
   </div>
 </template>
 
 <script>
+import houseEdit from '../maintain-dialog/house.edit'
 const columns = [
     {
         title: '所属公司',
@@ -38,21 +40,21 @@ const columns = [
 const data = [
     {
         key: '1',
-        affiliates: 'John Brown',
+        affiliates: 'John Brown111',
         homecode: 32,
         homename: 'New York No. 1 Lake Park',
         address: '123123'
     },
     {
         key: '2',
-        affiliates: 'John Brown',
+        affiliates: 'John Brown2222',
         homecode: 32,
         homename: 'New York No. 2 Lake Park',
         address: '123123'
     },
     {
         key: '3',
-        affiliates: 'John Brown',
+        affiliates: 'John Brown333',
         homecode: 32,
         homename: 'New York No. 3 Lake Park',
         address: '123123'
@@ -81,7 +83,11 @@ export default {
     data() {
         return {
             data,
-            columns
+            columns,
+            editObj: {
+                editvisible: true,
+                affiliates: ''
+            }
         }
     },
     computed: {
@@ -96,11 +102,18 @@ export default {
         }
     },
     methods: {
+        edit(recored) {
+            this.editObj.affiliates = recored.affiliates
+            this.editObj.editvisible = true
+        },
         seemqintain(text, record) {
             this.activeKey.defaultKey = '2'
             console.log(text, record)
             this.$emit('set-houseinformation', record.homename)
         }
+    },
+    components: {
+        houseEdit
     }
 }
 </script>

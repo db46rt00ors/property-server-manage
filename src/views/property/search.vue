@@ -91,13 +91,7 @@ export default {
             labelCol: { span: 10 },
             wrapperCol: { span: 10 },
             form: {
-                name: '',
-                region: undefined,
-                date1: undefined,
-                delivery: false,
-                type: [],
-                resource: '',
-                desc: ''
+                region: undefined
             }
         }
     },

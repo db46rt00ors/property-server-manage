@@ -1,7 +1,7 @@
 
 <template>
   <ul class="mytree">
-    <item class="item" :item="treeData"></item>
+    <item class="item" :item="treeData" @toggle="nClick"></item>
   </ul>
 </template>
 
@@ -14,6 +14,11 @@ export default {
             default: () => {
                 return ''
             }
+        }
+    },
+    methods: {
+        nClick(title) {
+            console.log(title, 'title')
         }
     },
     components: {

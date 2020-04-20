@@ -2,7 +2,7 @@
   <div>
     <!-- <a-form-model ref="ruleForm" :model="form2" :label-col="labelCol" :wrapper-col="wrapperCol"> -->
     <a-row class="header">
-      楼宇数量:
+      楼宇数量: {{ this.$store.state.propertyAdd.title }}
       <span style="color: blue;font-weight: 700;">12</span>
       单元数量:
       <!-- <a-form-model-item label="单元数量：" prop="region" class="units" :labelCol="labelCol" :wrapperCol="wrapperCol"> -->
@@ -35,6 +35,7 @@
               v-if="record.editable"
               style="margin: -5px 0"
               :value="text"
+
               @change="e => handleChange(e.target.value, record.key, col)"
             />
             <template v-else>{{ text }}</template>
@@ -179,15 +180,7 @@ export default {
             data,
             columns,
             editingKey: ''
-            // labelCol: { lg: { span: 5 }, sm: { span: 5 } },
-            // wrapperCol: { lg: { span: 19 }, sm: { span: 19 } },
-            // form: this.$form.createForm(this),
-            // loading: false,
-            // timer: 0
         }
-    },
-    created() {
-        console.log(this)
     },
     methods: {
         nextStep() {

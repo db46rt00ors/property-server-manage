@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import { oneStep } from '@/api/login'
+// import { oneStep } from '@/api/login'
 
 export default {
     name: 'Step1',
@@ -168,13 +168,14 @@ export default {
     },
     methods: {
         nextStep() {
-            oneStep({ a: 9 })
+            this.$emit('nextStep')
+            this.$store.commit('SET_TITLE', { title: '哈哈' })
             // this.$refs.ruleForm.validate(valid => {
             //     if (valid) {
             //         alert('submit!')
             //         const random = Math.random()
             //         if (random > 0.5) {
-            //             // this.$emit('nextStep')
+            //              this.$emit('nextStep')
             //         } else {
             //             this.$notification.error({
             //                 message: 'error',
