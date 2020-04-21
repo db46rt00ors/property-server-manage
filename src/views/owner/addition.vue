@@ -15,8 +15,7 @@
               <a-select-option value="2">小区BBB</a-select-option>
             </a-select>
           </a-form-model-item>
-
-          <MyTree :treeData="treeData"></MyTree>
+          <a-tree :treeData="gData" class="tree" @select="onSelect"></a-tree>
         </a-col>
         <a-col :span="18">
           <div>
@@ -64,7 +63,6 @@
 </template>
 
 <script>
-import MyTree from '@/components/MyTree'
 export default {
     data() {
         return {
@@ -80,79 +78,67 @@ export default {
             rules: {
                 area: [{ required: true, message: '加建面积必须填写', trigger: 'blur' }],
                 time: [{ required: true, message: '加建时间必须填写', trigger: 'blur' }]
-            },
-            treeData: {
-                name: '666小区',
-                children: [
-                    {
-                        name: '第一栋',
-                        children: [
-                            {
-                                name: '一单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '二单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '三单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            }
-                        ]
-                    },
-                    {
-                        name: '第二栋',
-                        children: [
-                            {
-                                name: '一单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '二单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '三单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            }
-                        ]
-                    },
-                    {
-                        name: '第三栋',
-                        children: [
-                            {
-                                name: '一单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '二单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            },
-                            {
-                                name: '三单元',
-                                children: [{ name: '101' }, { name: '102' }]
-                            }
-                        ]
-                    }
-                ]
             }
         }
     },
-    components: {
-        MyTree
+    computed: {
+        gData() {
+            const nest = (items, id = 0, link = 'parent_id') =>
+                items.filter(item => item[link] === id).map(item => ({ ...item, children: nest(items, item.id) }))
+            const data = [
+                { id: 1, parent_id: 0, title: '777小区' },
+                { id: 2, parent_id: 1, title: '第一栋' },
+                { id: 3, parent_id: 1, title: '第二栋' },
+                { id: 6, parent_id: 2, title: '第一单元' },
+                { id: 7, parent_id: 2, title: '第二单元' },
+                { id: 8, parent_id: 2, title: '第三单元' },
+                { id: 9, parent_id: 3, title: '第一单元' },
+                { id: 10, parent_id: 3, title: '第二单元' },
+                { id: 11, parent_id: 3, title: '第三单元' },
+                { id: 12, parent_id: 6, title: '101' },
+                { id: 13, parent_id: 6, title: '102' },
+                { id: 14, parent_id: 6, title: '103' },
+                { id: 15, parent_id: 7, title: '101' },
+                { id: 16, parent_id: 7, title: '102' },
+                { id: 17, parent_id: 7, title: '103' },
+                { id: 18, parent_id: 8, title: '101' },
+                { id: 19, parent_id: 8, title: '102' },
+                { id: 20, parent_id: 8, title: '103' },
+                { id: 21, parent_id: 9, title: '101' },
+                { id: 22, parent_id: 9, title: '102' },
+                { id: 23, parent_id: 9, title: '103' },
+                { id: 24, parent_id: 10, title: '101' },
+                { id: 25, parent_id: 10, title: '102' },
+                { id: 26, parent_id: 10, title: '103' },
+                { id: 27, parent_id: 11, title: '101' },
+                { id: 28, parent_id: 11, title: '102' },
+                { id: 29, parent_id: 11, title: '103' }
+            ]
+            return nest(data)
+        }
+    },
+    methods: {
+        onSelect(selectedKeys, info) {
+            console.log(selectedKeys, info)
+        }
     }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .search-house {
     background-color: #fff;
     padding: 20px;
     padding-right: 40px;
     min-height: 500px;
 }
-.mytree {
-    margin-top: 15px;
+/deep/ li.ant-tree-treenode-switcher-open,
+/deep/ li.ant-tree-treenode-switcher-close {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+/deep/ ul {
+    list-style-type: none;
+    padding-left: 15px;
 }
 </style>

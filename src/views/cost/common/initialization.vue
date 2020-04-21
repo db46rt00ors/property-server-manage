@@ -10,7 +10,7 @@
             </a-select>
           </a-form-model-item>
         </a-form-model>
-        <a-tree :treeData="gData" class="tree"></a-tree>
+        <a-tree :treeData="gData" class="tree" @select="onSelect"></a-tree>
       </a-col>
       <a-col :span="20">
         <a-row>
@@ -38,8 +38,6 @@
 
 <script>
 import _ from 'lodash'
-import aTree from 'ant-design-vue/es/tree'
-import 'ant-design-vue/es/tree/style'
 const columns = [
     {
         align: 'center',
@@ -74,98 +72,6 @@ export default {
             columns,
             selectedRowKeys: [],
             loading: false,
-            // treeData: [
-            //     {
-            //         title: 'xxx小区',
-            //         key: '0-0',
-            //         children: [
-            //             {
-            //                 title: '第一栋',
-            //                 key: '0-0-0',
-            //                 children: [
-            //                     {
-            //                         title: '第一单元',
-            //                         key: '0-0-0-0',
-            //                         children: [
-            //                             {
-            //                                 title: '101',
-            //                                 key: '0-0-0-0-0'
-            //                             },
-            //                             {
-            //                                 title: '102',
-            //                                 key: '0-0-0-0-1'
-            //                             },
-            //                             {
-            //                                 title: '103',
-            //                                 key: '0-0-0-0-2'
-            //                             }
-            //                         ]
-            //                     },
-            //                     {
-            //                         title: '第二单元',
-            //                         key: '0-0-0-1',
-            //                         children: [
-            //                             {
-            //                                 title: '101',
-            //                                 key: '0-0-0-1-0'
-            //                             },
-            //                             {
-            //                                 title: '102',
-            //                                 key: '0-0-0-1-1'
-            //                             },
-            //                             {
-            //                                 title: '104',
-            //                                 key: '0-0-0-1-2'
-            //                             }
-            //                         ]
-            //                     }
-            //                 ]
-            //             },
-            //             {
-            //                 title: '第二栋',
-            //                 key: '0-0-1',
-            //                 children: [
-            //                     {
-            //                         title: '第一单元',
-            //                         key: '0-0-1-0',
-            //                         children: [
-            //                             {
-            //                                 title: '101',
-            //                                 key: '0-0-1-0-0'
-            //                             },
-            //                             {
-            //                                 title: '102',
-            //                                 key: '0-0-1-0-1'
-            //                             },
-            //                             {
-            //                                 title: '103',
-            //                                 key: '0-0-1-0-2'
-            //                             }
-            //                         ]
-            //                     },
-            //                     {
-            //                         title: '第二单元',
-            //                         key: '0-0-1-1',
-            //                         children: [
-            //                             {
-            //                                 title: '101',
-            //                                 key: '0-0-1-1-0'
-            //                             },
-            //                             {
-            //                                 title: '102',
-            //                                 key: '0-0-1-1-1'
-            //                             },
-            //                             {
-            //                                 title: '103',
-            //                                 key: '0-0-1-1-2'
-            //                             }
-            //                         ]
-            //                     }
-            //                 ]
-            //             }
-            //         ]
-            //     }
-            // ],
             labelCol: { span: 10 },
             wrapperCol: { span: 10 },
             form: {
@@ -240,11 +146,27 @@ export default {
                 { id: 6, parent_id: 2, title: '第一单元' },
                 { id: 7, parent_id: 2, title: '第二单元' },
                 { id: 8, parent_id: 2, title: '第三单元' },
-                { id: 9, parent_id: 3, title: 'no.9' },
-                { id: 10, parent_id: 3, title: 'no.10' },
-                { id: 11, parent_id: 3, title: 'no.11' },
+                { id: 9, parent_id: 3, title: '第一单元' },
+                { id: 10, parent_id: 3, title: '第二单元' },
+                { id: 11, parent_id: 3, title: '第三单元' },
                 { id: 12, parent_id: 6, title: '101' },
-                { id: 13, parent_id: 6, title: '102' }
+                { id: 13, parent_id: 6, title: '102' },
+                { id: 14, parent_id: 6, title: '103' },
+                { id: 15, parent_id: 7, title: '101' },
+                { id: 16, parent_id: 7, title: '102' },
+                { id: 17, parent_id: 7, title: '103' },
+                { id: 18, parent_id: 8, title: '101' },
+                { id: 19, parent_id: 8, title: '102' },
+                { id: 20, parent_id: 8, title: '103' },
+                { id: 21, parent_id: 9, title: '101' },
+                { id: 22, parent_id: 9, title: '102' },
+                { id: 23, parent_id: 9, title: '103' },
+                { id: 24, parent_id: 10, title: '101' },
+                { id: 25, parent_id: 10, title: '102' },
+                { id: 26, parent_id: 10, title: '103' },
+                { id: 27, parent_id: 11, title: '101' },
+                { id: 28, parent_id: 11, title: '102' },
+                { id: 29, parent_id: 11, title: '103' }
             ]
             return nest(data)
         }
@@ -256,10 +178,10 @@ export default {
         },
         sendAjax() {
             console.log(666)
+        },
+        onSelect(selectedKeys, info) {
+            console.log(selectedKeys, info)
         }
-    },
-    components: {
-        aTree
     }
 }
 </script>
