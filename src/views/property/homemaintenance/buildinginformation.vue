@@ -1,15 +1,17 @@
 <template>
   <div>
     <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="data">
-      <a slot="name" slot-scope="text">{{ text }}</a>
+      <a slot="buildingcode" slot-scope="text, recored" @click="edit(recored)">{{ text }}</a>
       <template slot="operation" slot-scope="text, record">
         <a href="javascript:;" @click="seemqintain(text, record)">查看单元</a>
       </template>
     </a-table>
+    <building-edit :editObj="editObj"></building-edit>
   </div>
 </template>
 
 <script>
+import buildingEdit from '../maintain-dialog/building.edit'
 const columns = [
     {
         title: '楼宇编码',
@@ -95,7 +97,11 @@ export default {
     data() {
         return {
             data,
-            columns
+            columns,
+            editObj: {
+                editvisible: false,
+                buildingname: ''
+            }
         }
     },
     computed: {
@@ -110,6 +116,10 @@ export default {
         }
     },
     methods: {
+        edit(recored) {
+            this.editObj.buildingname = recored.buildingname
+            this.editObj.editvisible = true
+        },
         callback(key) {
             console.log(key)
         },
@@ -117,6 +127,9 @@ export default {
             this.activeKey.defaultKey = '3'
             this.$emit('set-buildinginformation', record.buildingname)
         }
+    },
+    components: {
+        buildingEdit
     }
 }
 </script>

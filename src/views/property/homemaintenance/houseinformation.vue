@@ -85,7 +85,7 @@ export default {
             data,
             columns,
             editObj: {
-                editvisible: true,
+                editvisible: false,
                 affiliates: ''
             }
         }

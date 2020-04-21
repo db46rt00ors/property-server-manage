@@ -1,15 +1,17 @@
 <template>
   <div>
     <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="data">
-      <a slot="name" slot-scope="text">{{ text }}</a>
+      <a slot="unitcode" slot-scope="text, recored" @click="edit(recored)">{{ text }}</a>
       <template slot="operation" slot-scope="text, record">
         <a href="javascript:;" @click="seemqintain(text, record)">查看房间</a>
       </template>
     </a-table>
+    <unit-edit :editObj="editObj"></unit-edit>
   </div>
 </template>
 
 <script>
+import unitEdit from '../maintain-dialog/unit.edit'
 const columns = [
     {
         title: '单元编码',
@@ -88,7 +90,11 @@ export default {
     data() {
         return {
             data,
-            columns
+            columns,
+            editObj: {
+                editvisible: false,
+                unitcode: ''
+            }
         }
     },
     computed: {
@@ -103,6 +109,10 @@ export default {
         }
     },
     methods: {
+        edit(recored) {
+            this.editObj.unitname = recored.unitname
+            this.editObj.editvisible = true
+        },
         callback(key) {
             console.log(key)
         },
@@ -110,6 +120,9 @@ export default {
             this.activeKey.defaultKey = '4'
             this.$emit('set-unitinformation', record.unitname)
         }
+    },
+    components: {
+        unitEdit
     }
 }
 </script>

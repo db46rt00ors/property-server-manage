@@ -1,12 +1,14 @@
 <template>
   <div>
     <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="data">
-      <a slot="name" slot-scope="text">{{ text }}</a>
+      <a slot="roomcode" slot-scope="text, record" @click="edit(record)">{{ text }}</a>
     </a-table>
+    <room-edit :editObj="editObj"></room-edit>
   </div>
 </template>
 
 <script>
+import roomEdit from '../maintain-dialog/room.edit'
 const columns = [
     {
         title: '房间编码',
@@ -58,7 +60,20 @@ const data = [
     {
         key: '1',
         roomcode: '房间编码',
-        roomname: '房间名称',
+        roomname: '房间名称11',
+        format: '规格',
+        face: '朝向',
+        function: '功能',
+        decoration: '装修',
+        type: '类型',
+        constructionarea: '建筑面积',
+        usagearea: '使用面积',
+        sold: '已售',
+        rented: '已租'
+    }, {
+        key: '2',
+        roomcode: '房间编码',
+        roomname: '房间名称222',
         format: '规格',
         face: '朝向',
         function: '功能',
@@ -86,7 +101,11 @@ export default {
     data() {
         return {
             data,
-            columns
+            columns,
+            editObj: {
+                editvisible: false,
+                roomname: ''
+            }
         }
     },
     computed: {
@@ -101,9 +120,16 @@ export default {
         }
     },
     methods: {
+        edit(recored) {
+            this.editObj.roomname = recored.roomname
+            this.editObj.editvisible = true
+        },
         callback(key) {
             console.log(key)
         }
+    },
+    components: {
+        roomEdit
     }
 }
 </script>
