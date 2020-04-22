@@ -60,14 +60,10 @@
       <a-row class="table-content">
         <a-form-item :wrapperCol="{span: 24}">
           <a-row class="setting">
-            <a-col class="left">
+            <a-col>
               <a-button type="primary" icon="search" @click="search">查询</a-button>
               <a-button type="primary" icon="file">生成Excel模版</a-button>
               <a-button type="primary" icon="file">导入Excel</a-button>
-            </a-col>
-            <a-col class="right">
-              <a-input></a-input>
-              <a-button type="primary">定位房间</a-button>
             </a-col>
           </a-row>
         </a-form-item>
@@ -210,7 +206,6 @@ export default {
                 editvisible: false,
                 estate_name: '',
                 applicant: ''
-
             }
         }
     },
@@ -254,18 +249,8 @@ export default {
         .setting {
             margin: 10px 0;
         }
-
         button {
             margin-left: 10px;
-        }
-        .left {
-            float: left;
-        }
-        .right {
-            float: right;
-            input {
-                width: 100px;
-            }
         }
     }
 }
