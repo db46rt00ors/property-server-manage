@@ -17,10 +17,9 @@
           <div class="title">初始化 xxxx 的表读数</div>
         </a-row>
         <a-row type="flex" justify="start" class="lastcost">
-          <div class="title">剩余的费用项目</div>
-          <a-button>添加费用</a-button>
-          <a-button>删除费用</a-button>
-          <a-button>刷新</a-button>
+          <div>仪表读数：</div>
+          <a-input></a-input>
+          <a-button>确认初始化</a-button>
         </a-row>
         <a-row>
           <a-table
@@ -48,6 +47,11 @@ const columns = [
         align: 'center',
         title: '费项名称',
         dataIndex: 'feename'
+    },
+    {
+        align: 'center',
+        title: '费项读表数',
+        dataIndex: 'feename_amount'
     },
     {
         align: 'center',
@@ -87,6 +91,7 @@ export default {
                     key: i + 1,
                     feenumber: _.random(1000, 5000),
                     feename: '费项名称' + _.random(1000, 5000),
+                    feename_amount: _.random(1000, 5000),
                     chargemethod: _.sample([
                         '自定义',
                         '按使用量',
@@ -214,8 +219,13 @@ li {
         margin-bottom: 10px;
     }
     .lastcost {
+        line-height: 40px;
+        input{
+            width: 150px;
+            margin-top: 4px;
+        }
         button {
-            margin-left: 10px;
+            margin-left: 4px;
             margin-top: 4px;
         }
     }
