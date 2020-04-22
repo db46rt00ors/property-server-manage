@@ -55,11 +55,12 @@
           </a-col>
           <a-col :span="12">
             <a-form-item label="使用量倍数">
-              <a-select 
+              <a-select
                 v-decorator="[
                   'usageamount',
                   { rules: [{ required: true, message: '必须填写使用量倍数!',trigger: 'change' }] }
-                ]">
+                ]"
+              >
                 <a-select-option value="shanghai">Zone one</a-select-option>
                 <a-select-option value="beijing">Zone two</a-select-option>
               </a-select>

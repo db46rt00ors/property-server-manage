@@ -62,7 +62,8 @@
           <a-row class="setting">
             <a-col class="left">
               <a-button type="primary" icon="search" @click="search">查询</a-button>
-              <a-button type="primary" icon="reload">重置</a-button>
+              <a-button type="primary" icon="file">生成Excel模版</a-button>
+              <a-button type="primary" icon="file">导入Excel</a-button>
             </a-col>
             <a-col class="right">
               <a-input></a-input>
