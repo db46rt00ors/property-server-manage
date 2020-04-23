@@ -25,8 +25,8 @@
               </a-select>
             </a-form-item>
           </a-col>
-          <a-col>
-            <a-form-item label="分摊方法" :labelCol="{span: 14}" :wrapperCol="{span: 10}">
+          <a-col :offset="1">
+            <a-form-item :labelCol="{span: 14}" :wrapperCol="{span: 10}">
               <a-button type="primary">添加公表</a-button>
             </a-form-item>
           </a-col>
@@ -254,6 +254,23 @@ export default {
                     console.log(selected, selectedRows, changeRows)
                 }
             }
+        },
+        rowSelection2() {
+            return {
+                onChange: (selectedRowKeys, selectedRows) => {
+                    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
+                },
+                onSelect: (record, selected, selectedRows) => {
+                    console.log(record, selected, selectedRows)
+                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+                    this.selectedRows = selectedRows
+                },
+                onSelectAll: (selected, selectedRows, changeRows) => {
+                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+                    this.selectedRows = selectedRows
+                    console.log(selected, selectedRows, changeRows)
+                }
+            }
         }
     },
     methods: {
@@ -279,10 +296,10 @@ export default {
     margin-bottom: 0px;
 }
 .title {
-    .ant-col{
+    .ant-col {
         margin-left: 10px;
     }
-    .fontstyle{
+    .fontstyle {
         font-size: 20px;
         font-weight: 700;
         color: red;

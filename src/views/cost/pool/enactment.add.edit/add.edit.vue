@@ -6,14 +6,17 @@
       width="70%"
       v-model="enactmentobj.visible"
     >
-      <a-form :label-col="labelCol" :form="form" :wrapper-col="wrapperCol">
+      <a-form :label-col="labelCol" :wrapper-col="wrapperCol" :form="form">
         <a-row>
           <a-col :span="12" :offset="1">基本信息</a-col>
         </a-row>
         <a-row>
           <a-col :span="24">
             <a-form-item label="所属楼盘" :labelCol="{span: 3}" :wrapperCol="{span: 21}">
-              <a-select :disabled="enactmentobj.recored != null" :value="enactmentobj.recored === null ? '' : enactmentobj.recored.property">
+              <a-select
+                :disabled="enactmentobj.recored != null"
+                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.property"
+              >
                 <a-select-option value="shanghai">Zone one</a-select-option>
                 <a-select-option value="beijing">Zone two</a-select-option>
               </a-select>
@@ -23,12 +26,16 @@
         <a-row>
           <a-col :span="12">
             <a-form-item label="费项编号">
-              <a-input :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feenumber"></a-input>
+              <a-input
+                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feenumber"
+              ></a-input>
             </a-form-item>
           </a-col>
           <a-col :span="12">
             <a-form-item label="费项名称">
-              <a-input :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feename"></a-input>
+              <a-input
+                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feename"
+              ></a-input>
             </a-form-item>
           </a-col>
         </a-row>
@@ -38,12 +45,17 @@
         <a-row>
           <a-col :span="12">
             <a-form-item label="单价">
-              <a-input :value="enactmentobj.recored === null ? '' : enactmentobj.recored.price"></a-input>
+              <a-input
+                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.price"
+              ></a-input>
             </a-form-item>
           </a-col>
           <a-col :span="12">
             <a-form-item label="收费周期(月)" placeholder="1">
-              <a-select :disabled="enactmentobj.recored != null" :value="enactmentobj.recored === null ? '' : enactmentobj.recored.chargingcycle">
+              <a-select
+                :disabled="enactmentobj.recored != null"
+                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.chargingcycle"
+              >
                 <a-select-option value="1">1</a-select-option>
                 <a-select-option value="2">2</a-select-option>
               </a-select>
@@ -109,30 +121,28 @@ export default {
         }
     },
     created() {
-      console.log(this.enactmentobj)
+        console.log(this.enactmentobj)
     },
     methods: {
-        save() {
-            this.$refs.ruleForm.validate(valid => {
-                if (valid) {
+        save(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (!err) {
                     this.$notification.success({
                         message: '提示',
                         duration: 3,
                         description: '保存成功，请新增下一条记录！！'
                     })
-                } else {
-                    console.log('error submit!!')
-                    return false
+                    console.log('Received values of form: ', values)
                 }
             })
         },
-        del() {
-            this.$refs.ruleForm.validate(valid => {
-                if (valid) {
+        del(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (!err) {
                     this.enactmentobj.visible = false
-                } else {
-                    console.log('error submit!!')
-                    return false
+                    console.log('Received values of form: ', values)
                 }
             })
         },
