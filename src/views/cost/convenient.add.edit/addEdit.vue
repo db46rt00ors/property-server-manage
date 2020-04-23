@@ -70,7 +70,8 @@
       </a-form>
       <template slot="footer">
         <a-button type="primary" icon="save" @click="save">保存</a-button>&nbsp;
-        <a-button type="primary" icon="delete" @click="del">删除</a-button>&nbsp;
+        <a-button type="primary" icon="delete" @click="del" v-if="convenientobj.recored">删除</a-button>&nbsp;
+        <a-button type="primary" icon="delete" @click="saveandclose" v-else>保存并关闭</a-button>&nbsp;
         <a-button type="primary" icon="close-square" @click="handleCancel">关闭</a-button>
       </template>
     </a-modal>
@@ -110,7 +111,7 @@ export default {
                 }
             })
         },
-        del(e) {
+        saveandclose(e) {
             e.preventDefault()
             this.form.validateFields((err, values) => {
                 if (!err) {
@@ -118,6 +119,9 @@ export default {
                     console.log('Received values of form: ', values)
                 }
             })
+        },
+        del() {
+            console.log('删除')
         },
         handleCancel() {
             this.convenientobj.visible = false
