@@ -286,6 +286,269 @@ export const asyncRouterMap = [
                         meta: { title: '打印单据设定', keepAlive: true, permission: ['226'] }
                     }
                 ]
+            },
+            {
+                path: '/costgeneration',
+                component: RouteView,
+                meta: { title: '收费管理', keepAlive: true, icon: bxAnaalyse, permission: ['228'] },
+                redirect: '/costgeneration/generaterise',
+                children: [
+                    {
+                        path: '/costgeneration/generaterise',
+                        component: RouteView,
+                        meta: { title: '费用生成', keepAlive: true, permission: ['228'] },
+                        redirect: '/costgeneration/generaterise',
+                        children: [
+                            {
+                                path: '/costgeneration/generaterise/chargemanagement',
+                                name: '生成台帐',
+                                component: () => import('@/views/costgeneration/generaterise/chargemanagement'),
+                                meta: { title: '生成台帐', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/generaterise/batchgeneration',
+                                name: '批量生成台帐',
+                                component: () => import('@/views/costgeneration/generaterise/batchgeneration'),
+                                meta: { title: '批量生成台帐', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/generaterise/tabledataimport',
+                                name: '抄表数据导入',
+                                component: () => import('@/views/costgeneration/generaterise/tabledataimport'),
+                                meta: { title: '抄表数据导入', keepAlive: true, permission: ['228'] }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/costgeneration/ledgermanagement',
+                        component: RouteView,
+                        meta: { title: '台帐管理', keepAlive: true, permission: ['228'] },
+                        redirect: '/costgeneration/ledgermanagement',
+                        children: [
+                            {
+                                path: '/costgeneration/ledgermanagement/conventionalmodify',
+                                name: '常规台帐修改',
+                                component: () => import('@/views/costgeneration/ledgermanagement/conventionalmodify'),
+                                meta: { title: '常规台帐修改', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/ledgermanagement/publicpoolmodify',
+                                name: '公摊台帐修改',
+                                component: () => import('@/views/costgeneration/ledgermanagement/publicpoolmodify'),
+                                meta: { title: '公摊台帐修改', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/ledgermanagement/conventionalcopy',
+                                name: '常规台帐复制',
+                                component: () => import('@/views/costgeneration/ledgermanagement/conventionalcopy'),
+                                meta: { title: '常规台帐复制', keepAlive: true, permission: ['228'] }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/costgeneration/feecollection',
+                        component: RouteView,
+                        meta: { title: '费用收取', keepAlive: true, permission: ['228'] },
+                        redirect: '/costgeneration/feecollection',
+                        children: [
+                            {
+                                path: '/costgeneration/feecollection/conventionalcharge',
+                                name: '常规收款',
+                                component: () => import('@/views/costgeneration/feecollection/conventionalcharge'),
+                                meta: { title: '常规收款', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/feecollection/convenientcharge',
+                                name: '便捷收款',
+                                component: () => import('@/views/costgeneration/feecollection/convenientcharge'),
+                                meta: { title: '便捷收款', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/feecollection/linkecharge',
+                                name: '临客收款',
+                                component: () => import('@/views/costgeneration/feecollection/linkecharge'),
+                                meta: { title: '临客收款', keepAlive: true, permission: ['228'] }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/costgeneration/paymentchanges',
+                        component: RouteView,
+                        meta: { title: '收款变更', keepAlive: true, permission: ['228'] },
+                        redirect: '/costgeneration/paymentchanges',
+                        children: [
+                            {
+                                path: '/costgeneration/paymentchanges/paymentchangesconventional',
+                                name: '常规收款变更',
+                                component: () => import('@/views/costgeneration/paymentchanges/paymentchangesconventional'),
+                                meta: { title: '常规收款变更', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/paymentchanges/paymentchangeslinke',
+                                name: '临客收款变更',
+                                component: () => import('@/views/costgeneration/paymentchanges/paymentchangeslinke'),
+                                meta: { title: '临客收款变更', keepAlive: true, permission: ['228'] }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/costgeneration/refundinvalid',
+                        component: RouteView,
+                        meta: { title: '退款作废', keepAlive: true, permission: ['228'] },
+                        redirect: '/costgeneration/refundinvalid',
+                        children: [
+                            {
+                                path: '/costgeneration/refundinvalid/invoicerefund',
+                                name: '收款单退款',
+                                component: () => import('@/views/costgeneration/refundinvalid/invoicerefund'),
+                                meta: { title: '收款单退款', keepAlive: true, permission: ['228'] }
+                            },
+                            {
+                                path: '/costgeneration/refundinvalid/invoiceinvalid',
+                                name: '收款单作废',
+                                component: () => import('@/views/costgeneration/refundinvalid/invoiceinvalid'),
+                                meta: { title: '收款单作废', keepAlive: true, permission: ['228'] }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/costgeneration/advancereceiptmanagement',
+                        name: '预收款管理',
+                        component: () => import('@/views/costgeneration/advancereceiptmanagement'),
+                        meta: { title: '预收款管理', keepAlive: true, permission: ['226'] }
+                    }
+                ]
+            },
+            {
+                path: '/parkingmanagement/penalty',
+                component: RouteView,
+                meta: { title: '车位管理', keepAlive: true, icon: bxAnaalyse, permission: ['233'] },
+                children: [
+                    {
+                        path: '/parkingmanagement/penalty',
+                        name: '滞纳金设置',
+                        component: () => import('@/views/parkingmanagement/penalty'),
+                        meta: { title: '滞纳金设置', keepAlive: true, permission: ['233'] }
+                    },
+                    {
+                        path: '/parkingmanagement/parkinginformation',
+                        name: '车位信息',
+                        component: () => import('@/views/parkingmanagement/parkinginformation'),
+                        meta: { title: '车位信息', keepAlive: true, permission: ['233'] }
+                    },
+                    {
+                        path: '/parkingmanagement/parkingsale',
+                        name: '车位销售',
+                        component: () => import('@/views/parkingmanagement/parkingsale'),
+                        meta: { title: '车位销售', keepAlive: true, permission: ['233'] }
+                    },
+                    {
+                        path: '/parkingmanagement/parkingrent',
+                        component: RouteView,
+                        meta: { title: '车位出租', keepAlive: true, permission: ['233'] },
+                        redirect: '/parkingmanagement/parkingrent',
+                        children: [
+                            {
+                                path: '/parkingmanagement/parkingrent/contractmanagement',
+                                name: '合同管理',
+                                component: () => import('@/views/parkingmanagement/parkingrent/contractmanagement'),
+                                meta: { title: '合同管理', keepAlive: true, permission: ['233'] }
+                            },
+                            {
+                                path: '/parkingmanagement/parkingrent/contractpayment',
+                                name: '合同缴费',
+                                component: () => import('@/views/parkingmanagement/parkingrent/contractpayment'),
+                                meta: { title: '合同缴费', keepAlive: true, permission: ['233'] }
+                            },
+                            {
+                                path: '/parkingmanagement/parkingrent/paymentinvalid',
+                                name: '缴费作废',
+                                component: () => import('@/views/parkingmanagement/parkingrent/paymentinvalid'),
+                                meta: { title: '缴费作废', keepAlive: true, permission: ['233'] }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                path: '/securitymanagement/caraccess',
+                component: RouteView,
+                meta: { title: '安保管理', keepAlive: true, icon: bxAnaalyse, permission: ['224'] },
+                children: [
+                    {
+                        path: '/securitymanagement/caraccess',
+                        name: '车辆进出',
+                        component: () => import('@/views/securitymanagement/caraccess'),
+                        meta: { title: '车辆进出', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/securitymanagement/securityarrangement',
+                        name: '保安安排',
+                        component: () => import('@/views/securitymanagement/securityarrangement'),
+                        meta: { title: '保安安排', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/securitymanagement/dutymanagement',
+                        name: '执勤管理',
+                        component: () => import('@/views/securitymanagement/dutymanagement'),
+                        meta: { title: '执勤管理', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/securitymanagement/visitmanagement',
+                        name: '来访管理',
+                        component: () => import('@/views/securitymanagement/visitmanagement'),
+                        meta: { title: '来访管理', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/securitymanagement/articleaccess',
+                        name: '物品出入',
+                        component: () => import('@/views/securitymanagement/articleaccess'),
+                        meta: { title: '物品出入', keepAlive: true, permission: ['224'] }
+                    }
+                ]
+            },
+            {
+                path: '/communityfire/communityactivity',
+                component: RouteView,
+                meta: { title: '社区消防', keepAlive: true, icon: bxAnaalyse, permission: ['224'] },
+                children: [
+                    {
+                        path: '/communityfire/communityactivity',
+                        name: '社区活动',
+                        component: () => import('@/views/communityfire/communityactivity'),
+                        meta: { title: '社区活动', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/communityfire/mailcollection',
+                        name: '信件收取',
+                        component: () => import('@/views/communityfire/mailcollection'),
+                        meta: { title: '信件收取', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/communityfire/firefacilities',
+                        name: '消防设施',
+                        component: () => import('@/views/communityfire/firefacilities'),
+                        meta: { title: '消防设施', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/communityfire/fireinspection',
+                        name: '消防巡查',
+                        component: () => import('@/views/communityfire/fireinspection'),
+                        meta: { title: '消防巡查', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/communityfire/firedrill',
+                        name: '消防演练',
+                        component: () => import('@/views/communityfire/firedrill'),
+                        meta: { title: '消防演练', keepAlive: true, permission: ['224'] }
+                    },
+                    {
+                        path: '/communityfire/fireaccident',
+                        name: '消防事故',
+                        component: () => import('@/views/communityfire/fireaccident'),
+                        meta: { title: '消防演练', keepAlive: true, permission: ['224'] }
+                    }
+                ]
             }
         ]
     },
