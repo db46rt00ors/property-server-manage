@@ -36,9 +36,6 @@ export default {
             }
         }
     },
-    created() {
-        console.log(this.$route)
-    },
     methods: {
         callback(key) {
             this.$route.query.defaultKey = key

@@ -1,64 +1,69 @@
 <template>
   <div class="search-house">
-    <a-form-model
-      :rules="rules"
-      ref="ruleForm"
-      :model="form"
-      :label-col="labelCol"
-      :wrapper-col="wrapperCol"
-    >
+    <a-form :form="form" :label-col="labelCol" :wrapper-col="wrapperCol">
       <a-row>
         <a-col :span="6">
-          <a-form-model-item label="请选择楼盘:">
-            <a-select v-model="form.region" placeholder="please select your zone">
+          <a-form-item label="请选择楼盘:">
+            <a-select placeholder="please select your zone" v-decorator="['region']">
               <a-select-option value="1">小区AAA</a-select-option>
               <a-select-option value="2">小区BBB</a-select-option>
             </a-select>
-          </a-form-model-item>
-          <a-tree :treeData="gData" class="tree" @select="onSelect"></a-tree>
+          </a-form-item>
+          <a-form-item label="房屋查询">
+            <a-cascader
+              class="cascader"
+              :options="options"
+              @change="onChange"
+              v-decorator="['cascader']"
+              placeholder="Please select"
+            />
+          </a-form-item>
         </a-col>
         <a-col :span="18">
           <div>
             <h1 class="housinginformation-header">查看 第1栋 楼宇信息</h1>
             <a-row>
               <a-col :span="8">
-                <a-form-model-item
-                  label="加建面积"
-                  prop="area"
-                  :labelCol="{span: 6}"
-                  :wrapperCol="{span: 18}"
-                >
-                  <a-input v-model="form.area" />
-                </a-form-model-item>
+                <a-form-item label="加建面积" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+                  <a-input
+                    v-decorator="[
+                      'area',
+                      { rules: [{ required: true, message: '加建面积必须填写', trigger: 'blur' }] },
+                    ]"
+                  />
+                </a-form-item>
               </a-col>
               <a-col :span="8">
-                <a-form-model-item
-                  label="加建时间"
-                  prop="time"
-                  :labelCol="{span: 6}"
-                  :wrapperCol="{span: 18}"
-                >
-                  <a-input v-model="form.time" />
-                </a-form-model-item>
+                <a-form-item label="加建时间" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+                  <a-input
+                    v-decorator="[
+                      'time',
+                      { rules: [{ required: true, message: '加建时间必须填写', trigger: 'blur' }] },
+                    ]"
+                  />
+                </a-form-item>
               </a-col>
               <a-col :span="8">
-                <a-form-model-item label="加建状态" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
-                  <a-select placeholder="please select your zone" v-model="form.status">
+                <a-form-item label="加建状态" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+                  <a-select placeholder="please select your zone" v-decorator="['status']">
                     <a-select-option value="0">正常</a-select-option>
                     <a-select-option value="1">停用</a-select-option>
                   </a-select>
-                </a-form-model-item>
+                </a-form-item>
               </a-col>
             </a-row>
             <a-row>
-              <a-form-model-item label="加建说明" :labelCol="{span: 2}" :wrapperCol="{span: 22}">
-                <a-textarea v-model="form.explanation"></a-textarea>
-              </a-form-model-item>
+              <a-form-item label="加建说明" :labelCol="{span: 2}" :wrapperCol="{span: 22}">
+                <a-textarea v-decorator="['explanation']"></a-textarea>
+              </a-form-item>
+            </a-row>
+            <a-row type="flex" justify="center">
+              <a-button @click="save">保存</a-button>
             </a-row>
           </div>
         </a-col>
       </a-row>
-    </a-form-model>
+    </a-form>
   </div>
 </template>
 
@@ -68,58 +73,92 @@ export default {
         return {
             labelCol: { lg: { span: 6 }, sm: { span: 6 } },
             wrapperCol: { lg: { span: 16 }, sm: { span: 16 } },
-            form: {
-                region: [],
-                area: '',
-                time: '',
-                status: [],
-                explanation: ''
-            },
-            rules: {
-                area: [{ required: true, message: '加建面积必须填写', trigger: 'blur' }],
-                time: [{ required: true, message: '加建时间必须填写', trigger: 'blur' }]
-            }
-        }
-    },
-    computed: {
-        gData() {
-            const nest = (items, id = 0, link = 'parent_id') =>
-                items.filter(item => item[link] === id).map(item => ({ ...item, children: nest(items, item.id) }))
-            const data = [
-                { id: 1, parent_id: 0, title: '777小区' },
-                { id: 2, parent_id: 1, title: '第一栋' },
-                { id: 3, parent_id: 1, title: '第二栋' },
-                { id: 6, parent_id: 2, title: '第一单元' },
-                { id: 7, parent_id: 2, title: '第二单元' },
-                { id: 8, parent_id: 2, title: '第三单元' },
-                { id: 9, parent_id: 3, title: '第一单元' },
-                { id: 10, parent_id: 3, title: '第二单元' },
-                { id: 11, parent_id: 3, title: '第三单元' },
-                { id: 12, parent_id: 6, title: '101' },
-                { id: 13, parent_id: 6, title: '102' },
-                { id: 14, parent_id: 6, title: '103' },
-                { id: 15, parent_id: 7, title: '101' },
-                { id: 16, parent_id: 7, title: '102' },
-                { id: 17, parent_id: 7, title: '103' },
-                { id: 18, parent_id: 8, title: '101' },
-                { id: 19, parent_id: 8, title: '102' },
-                { id: 20, parent_id: 8, title: '103' },
-                { id: 21, parent_id: 9, title: '101' },
-                { id: 22, parent_id: 9, title: '102' },
-                { id: 23, parent_id: 9, title: '103' },
-                { id: 24, parent_id: 10, title: '101' },
-                { id: 25, parent_id: 10, title: '102' },
-                { id: 26, parent_id: 10, title: '103' },
-                { id: 27, parent_id: 11, title: '101' },
-                { id: 28, parent_id: 11, title: '102' },
-                { id: 29, parent_id: 11, title: '103' }
+            form: this.$form.createForm(this),
+            options: [
+                {
+                    value: '第一栋',
+                    label: '第一栋',
+                    children: [
+                        {
+                            value: '一单元',
+                            label: '一单元',
+                            children: [
+                                {
+                                    value: '101',
+                                    label: '101'
+                                },
+                                {
+                                    value: '102',
+                                    label: '102'
+                                }
+                            ]
+                        },
+                        {
+                            value: '二单元',
+                            label: '二单元',
+                            children: [
+                                {
+                                    value: '101',
+                                    label: '101'
+                                },
+                                {
+                                    value: '102',
+                                    label: '102'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    value: '第二栋',
+                    label: '第二栋',
+                    children: [
+                        {
+                            value: '一单元',
+                            label: '一单元',
+                            children: [
+                                {
+                                    value: '101',
+                                    label: '101'
+                                },
+                                {
+                                    value: '102',
+                                    label: '102'
+                                }
+                            ]
+                        },
+                        {
+                            value: '二单元',
+                            label: '二单元',
+                            children: [
+                                {
+                                    value: '101',
+                                    label: '101'
+                                },
+                                {
+                                    value: '102',
+                                    label: '102'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
-            return nest(data)
         }
     },
+
     methods: {
-        onSelect(selectedKeys, info) {
+        onChange(selectedKeys, info) {
             console.log(selectedKeys, info)
+        },
+        save(e) {
+            e.preventDefault()
+            this.form.validateFieldsAndScroll((err, values) => {
+                if (!err) {
+                    this.$emit('nextStep')
+                    console.log('Received values of form: ', values)
+                }
+            })
         }
     }
 }

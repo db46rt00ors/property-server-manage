@@ -1,18 +1,25 @@
 <template>
   <div class="content">
     <a-row>
-      <a-col :span="4">
+      <a-col :span="6">
         <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
-          <a-form-item label="请选择住宅:">
+          <a-form-item label="请选择住宅">
             <a-select placeholder="please select your zone" @change="houseChange">
               <a-select-option value="1">121小区</a-select-option>
               <a-select-option value="2">122小区</a-select-option>
             </a-select>
           </a-form-item>
+          <a-form-item label="罚款查询">
+            <a-cascader
+              class="cascader"
+              :options="options"
+              @change="onChange"
+              placeholder="Please select"
+            />
+          </a-form-item>
         </a-form>
-        <a-tree :treeData="gData" class="tree" @select="onSelect"></a-tree>
       </a-col>
-      <a-col :span="20">
+      <a-col :span="18">
         <a-row type="flex" justify="end">
           <a-button @click="save">保存</a-button>
           <a-button @click="add" style="margin: 0 10px;">新增</a-button>
@@ -68,36 +75,56 @@ export default {
             selectedRowKeys: [],
             labelCol: { lg: { span: 8 } },
             wrapperCol: { lg: { span: 16 } },
-            form: this.$form.createForm(this)
-        }
-    },
-    computed: {
-        gData() {
-            const nest = (items, id = 0, link = 'parent_id') =>
-                items.filter(item => item[link] === id).map(item => ({ ...item, children: nest(items, item.id) }))
-            const data = [
-                { id: 1, parent_id: 0, title: 'xxx小区' },
-                { id: 2, parent_id: 1, title: '罚款' },
-                { id: 3, parent_id: 1, title: '押金' },
-                { id: 4, parent_id: 2, title: '停车罚款' },
-                { id: 5, parent_id: 2, title: '广告罚款' },
-                { id: 6, parent_id: 2, title: '广告xx罚款' }
+            form: this.$form.createForm(this),
+            options: [
+                {
+                    value: '罚款',
+                    label: '罚款',
+                    children: [
+                        {
+                            value: '停车罚款',
+                            label: '停车罚款',
+                            children: [
+                                {
+                                    value: '广告罚款',
+                                    label: '广告罚款'
+                                },
+                                {
+                                    value: '102',
+                                    label: '102'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    value: '押金',
+                    label: '押金',
+                    children: [
+                        {
+                            value: '押金11',
+                            label: '押金11',
+                            children: [
+                                {
+                                    value: '押金22',
+                                    label: '押金22'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
-            return nest(data)
         }
     },
     methods: {
-        onSelect(selectedKeys, info) {
+        onChange(selectedKeys, info) {
             console.log(selectedKeys, info)
-            console.log('title', info.node.title)
-            console.log('key', info.node.pos)
-            console.log(this.gData)
         },
         houseChange(value) {
             console.log(value)
         },
         feesChange(value) {
-          console.log(value)
+            console.log(value)
         },
         save() {},
         add() {},
