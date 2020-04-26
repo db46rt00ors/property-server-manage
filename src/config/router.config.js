@@ -14,20 +14,20 @@ export const asyncRouterMap = [
             {
                 path: 'personaloffice',
                 name: 'personaloffice',
-                redirect: '/personaloffice/Mynews',
+                redirect: '/personaloffice/mynews',
                 component: RouteView,
                 meta: { title: '个人办公', keepAlive: true, icon: bxAnaalyse, permission: ['901'] },
                 children: [
                     {
-                        path: 'Mynews',
-                        name: 'Mynews',
-                        component: () => import('@/views/personaloffice/Mynews'),
+                        path: 'mynews',
+                        name: '我的消息',
+                        component: () => import('@/views/personaloffice/mynews'),
                         meta: { title: '我的消息', keepAlive: true, permission: ['901', '90101'] }
                     },
                     {
-                        path: 'Mymail',
-                        name: 'Mymail',
-                        component: () => import('@/views/personaloffice/Mymail'),
+                        path: 'mymail',
+                        name: '我的邮件',
+                        component: () => import('@/views/personaloffice/mymail'),
                         meta: { title: '我的邮件', keepAlive: true, permission: ['901', '90102'] }
                     }
                 ]
@@ -240,13 +240,13 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: 'cost/pool/public',
+                        path: '/cost/pool/public',
                         component: RouteView,
                         meta: { title: '公摊费项', keepAlive: true, permission: ['226'] },
-                        redirect: 'cost/pool/public',
+                        redirect: '/cost/pool/public',
                         children: [
                             {
-                                path: 'cost/pool/public',
+                                path: '/cost/pool/public',
                                 name: '公摊费项设定',
                                 component: () => import('@/views/cost/pool/public'),
                                 meta: { title: '公摊费项设定', keepAlive: true, permission: ['226'] }

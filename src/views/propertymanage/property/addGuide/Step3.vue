@@ -214,9 +214,6 @@ export default {
                 this.data = newData
             }
         }
-    },
-    beforeDestroy() {
-        //  clearTimeout(this.timer)
     }
 }
 </script>
