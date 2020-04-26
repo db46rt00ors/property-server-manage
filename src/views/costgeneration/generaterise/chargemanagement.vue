@@ -466,7 +466,7 @@ export default {
     display: flex;
 }
 .cascader {
-    // width: 330px;
+    width: 330px;
 }
 .title {
     line-height: 40px;
