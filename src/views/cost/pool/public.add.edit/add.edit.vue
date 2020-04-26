@@ -1,10 +1,10 @@
 <template>
   <div>
     <a-modal
-      :title="`${enactmentobj.recored === null ? '新增' : '编辑'+enactmentobj.recored.property }`"
+      :title="`${publicobj.recored === null ? '新增' : '编辑'+publicobj.recored.property }`"
       ref="modalTitle"
       width="70%"
-      v-model="enactmentobj.visible"
+      v-model="publicobj.visible"
     >
       <a-form :label-col="labelCol" :wrapper-col="wrapperCol" :form="form">
         <a-row>
@@ -14,8 +14,8 @@
           <a-col :span="24">
             <a-form-item label="所属楼盘" :labelCol="{span: 3}" :wrapperCol="{span: 21}">
               <a-select
-                :disabled="enactmentobj.recored != null"
-                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.property"
+                :disabled="publicobj.recored != null"
+                :value="publicobj.recored === null ? '' : publicobj.recored.property"
               >
                 <a-select-option value="shanghai">Zone one</a-select-option>
                 <a-select-option value="beijing">Zone two</a-select-option>
@@ -27,14 +27,14 @@
           <a-col :span="12">
             <a-form-item label="费项编号">
               <a-input
-                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feenumber"
+                :value="publicobj.recored === null ? '' : publicobj.recored.feenumber"
               ></a-input>
             </a-form-item>
           </a-col>
           <a-col :span="12">
             <a-form-item label="费项名称">
               <a-input
-                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.feename"
+                :value="publicobj.recored === null ? '' : publicobj.recored.feename"
               ></a-input>
             </a-form-item>
           </a-col>
@@ -46,15 +46,15 @@
           <a-col :span="12">
             <a-form-item label="单价">
               <a-input
-                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.price"
+                :value="publicobj.recored === null ? '' : publicobj.recored.price"
               ></a-input>
             </a-form-item>
           </a-col>
           <a-col :span="12">
             <a-form-item label="收费周期(月)" placeholder="1">
               <a-select
-                :disabled="enactmentobj.recored != null"
-                :value="enactmentobj.recored === null ? '' : enactmentobj.recored.chargingcycle"
+                :disabled="publicobj.recored != null"
+                :value="publicobj.recored === null ? '' : publicobj.recored.chargingcycle"
               >
                 <a-select-option value="1">1</a-select-option>
                 <a-select-option value="2">2</a-select-option>
@@ -111,7 +111,7 @@ export default {
         }
     },
     props: {
-        enactmentobj: {
+        publicobj: {
             type: Object,
             default: () => {
                 return {
@@ -121,7 +121,7 @@ export default {
         }
     },
     created() {
-        console.log(this.enactmentobj)
+        console.log(this.publicobj)
     },
     methods: {
         save(e) {
@@ -141,13 +141,13 @@ export default {
             e.preventDefault()
             this.form.validateFields((err, values) => {
                 if (!err) {
-                    this.enactmentobj.visible = false
+                    this.publicobj.visible = false
                     console.log('Received values of form: ', values)
                 }
             })
         },
         handleCancel() {
-            this.enactmentobj.visible = false
+            this.publicobj.visible = false
         }
     }
 }

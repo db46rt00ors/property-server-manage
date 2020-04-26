@@ -28,12 +28,12 @@
         <a slot="feename" slot-scope="text, recored" @click="edit(recored)">{{ text }}</a>
       </a-table>
     </a-row>
-    <add-edit :enactmentobj="enactmentobj"></add-edit>
+    <add-edit :publicobj="publicobj"></add-edit>
   </div>
 </template>
 
 <script>
-import addEdit from './enactment.add.edit/add.edit'
+import addEdit from './public.add.edit/add.edit'
 import _ from 'lodash'
 const columns = [
     {
@@ -130,7 +130,7 @@ for (let i = 0; i < 200; i++) {
 export default {
     data() {
         return {
-            enactmentobj: {
+            publicobj: {
                 visible: false,
                 recored: null
             },
@@ -172,12 +172,12 @@ export default {
             console.log('params', pagination, filters, sorter)
         },
         showAddModal() {
-            this.enactmentobj.visible = true
-            this.enactmentobj.recored = null
+            this.publicobj.visible = true
+            this.publicobj.recored = null
         },
         edit(recored) {
-          this.enactmentobj.visible = true
-          this.enactmentobj.recored = recored
+          this.publicobj.visible = true
+          this.publicobj.recored = recored
           console.log(recored)
         },
         chooseestate(value) {

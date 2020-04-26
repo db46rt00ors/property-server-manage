@@ -225,7 +225,7 @@ export default {
         sendAjax() {
             console.log(666)
         },
-        onSelect(selectedKeys, info) {
+        onChange(selectedKeys, info) {
             console.log(selectedKeys, info)
         }
     }

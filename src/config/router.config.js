@@ -129,7 +129,7 @@ export const asyncRouterMap = [
                 path: 'owner',
                 component: RouteView,
                 meta: { title: '业主信息', keepAlive: true, icon: bxAnaalyse, permission: ['223'] },
-                redirect: '/owner/information',
+                redirect: 'information',
                 children: [
                     {
                         path: 'information',
@@ -144,37 +144,37 @@ export const asyncRouterMap = [
                         meta: { title: '业主验房', keepAlive: true, permission: ['223'] }
                     },
                     {
-                        path: '/owner/decoration/enter',
+                        path: 'decorationr',
                         component: RouteView,
                         meta: { title: '业主装修', keepAlive: true, permission: ['223'] },
-                        redirect: '/owner/decoration/enter',
+                        redirect: 'enter',
                         children: [
                             {
-                                path: '/owner/decoration/enter',
+                                path: 'enter',
                                 name: '装修录入',
                                 component: () => import('@/views/owner/decoration/enter'),
                                 meta: { title: '装修录入', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: '/owner/decoration/approval',
+                                path: 'approval',
                                 name: '装修审批',
                                 component: () => import('@/views/owner/decoration/approval'),
                                 meta: { title: '装修审批', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: '/owner/decoration/invalid',
+                                path: 'invalid',
                                 name: '装修作废',
                                 component: () => import('@/views/owner/decoration/invalid'),
                                 meta: { title: '装修作废', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: '/owner/decoration/acceptance',
+                                path: 'acceptance',
                                 name: '装修验收',
                                 component: () => import('@/views/owner/decoration/acceptance'),
                                 meta: { title: '装修验收', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: '/owner/decoration/search',
+                                path: 'search',
                                 name: '装修查询',
                                 component: () => import('@/views/owner/decoration/search'),
                                 meta: { title: '装修查询', keepAlive: true, permission: ['223'] }
@@ -202,38 +202,37 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: '/cost/common',
+                path: 'cost',
                 component: RouteView,
                 meta: { title: '费项设置', keepAlive: true, icon: bxAnaalyse, permission: ['223'] },
-                redirect: '/cost/common',
+                redirect: 'common',
                 children: [
                     {
-                        path: '/cost/common/enactment',
+                        path: 'common',
                         component: RouteView,
                         meta: { title: '常规费项', keepAlive: true, permission: ['223'] },
-                        redirect: '/cost/common/enactment',
+                        redirect: 'common',
                         children: [
                             {
-                                path: '/cost/common/enactment',
+                                path: 'common',
                                 name: '常规费项设定',
-                                component: () => import('@/views/cost/common/enactment'),
+                                component: () => import('@/views/cost/common/common'),
                                 meta: { title: '费项设定', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: '/cost/common/distributed',
+                                path: 'distributed',
                                 name: '费项分布',
                                 component: () => import('@/views/cost/common/distributed'),
                                 meta: { title: '费项分布', keepAlive: true }
                             },
                             {
-                                path: '/cost/common/initialization',
+                                path: 'initialization',
                                 name: '初始化仪表',
                                 component: () => import('@/views/cost/common/initialization'),
                                 meta: { title: '初始化仪表', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                //   floorcoefficient
-                                path: '/cost/common/floorcoefficient',
+                                path: 'floorcoefficient',
                                 name: '楼层系数',
                                 component: () => import('@/views/cost/common/floorcoefficient'),
                                 meta: { title: '楼层系数', keepAlive: true, permission: ['223'] }
@@ -241,15 +240,15 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/cost/pool/enactment',
+                        path: '/cost/pool/public',
                         component: RouteView,
                         meta: { title: '公摊费项', keepAlive: true, permission: ['226'] },
-                        redirect: '/cost/pool/enactment',
+                        redirect: '/cost/pool/public',
                         children: [
                             {
-                                path: '/cost/pool/enactment',
+                                path: '/cost/pool/public',
                                 name: '公摊费项设定',
-                                component: () => import('@/views/cost/pool/enactment'),
+                                component: () => import('@/views/cost/pool/public'),
                                 meta: { title: '费项设定', keepAlive: true, permission: ['226'] }
                             },
                             {
@@ -288,7 +287,7 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: '/costgeneration',
+                path: 'costgeneration',
                 component: RouteView,
                 meta: { title: '收费管理', keepAlive: true, icon: bxAnaalyse, permission: ['228'] },
                 redirect: '/costgeneration/generaterise',
@@ -420,7 +419,7 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: '/parkingmanagement/penalty',
+                path: 'parkingmanagement',
                 component: RouteView,
                 meta: { title: '车位管理', keepAlive: true, icon: bxAnaalyse, permission: ['233'] },
                 children: [
@@ -471,7 +470,7 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: '/securitymanagement/caraccess',
+                path: 'securitymanagement',
                 component: RouteView,
                 meta: { title: '安保管理', keepAlive: true, icon: bxAnaalyse, permission: ['224'] },
                 children: [
@@ -508,7 +507,7 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: '/communityfire/communityactivity',
+                path: 'communityfire',
                 component: RouteView,
                 meta: { title: '社区消防', keepAlive: true, icon: bxAnaalyse, permission: ['224'] },
                 children: [
