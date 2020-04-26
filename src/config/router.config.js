@@ -33,22 +33,22 @@ export const asyncRouterMap = [
                 ]
             },
             {
-                path: 'property',
-                name: 'property',
+                path: '/propertymanage',
+                name: '住宅小区',
                 component: PageView,
                 meta: { title: '楼盘管理', keepAlive: true, icon: 'slack', permission: ['221'] },
-                redirect: '/property/add',
+                redirect: '/propertymanage/property/add',
                 children: [
                     {
-                        path: '/property/add',
+                        path: '/propertymanage/property/add',
                         component: RouteView,
                         meta: { title: '住宅小区', keepAlive: true, icon: 'layout', permission: ['221', '22101'] },
-                        redirect: '/property/add',
+                        redirect: '/propertymanage/property/add',
                         children: [
                             {
-                                path: '/property/add',
+                                path: '/propertymanage/property/add',
                                 name: '新增住宅向导',
-                                component: () => import('@/views/property/add'),
+                                component: () => import('@/views/propertymanage/property/add'),
                                 meta: {
                                     title: '新增住宅向导',
                                     keepAlive: true,
@@ -56,9 +56,9 @@ export const asyncRouterMap = [
                                 }
                             },
                             {
-                                path: '/property/building',
+                                path: '/propertymanage/property/building',
                                 name: '批量增加住宅',
-                                component: () => import('@/views/property/building'),
+                                component: () => import('@/views/propertymanage/property/building'),
                                 meta: {
                                     title: '批量增加楼宇',
                                     keepAlive: true,
@@ -66,9 +66,9 @@ export const asyncRouterMap = [
                                 }
                             },
                             {
-                                path: '/property/maintain',
+                                path: '/propertymanage/property/maintain',
                                 name: '住宅维护',
-                                component: () => import('@/views/property/maintain'),
+                                component: () => import('@/views/propertymanage/property/maintain'),
                                 meta: {
                                     title: '住宅维护',
                                     keepAlive: true,
@@ -76,21 +76,21 @@ export const asyncRouterMap = [
                                 }
                             },
                             {
-                                path: '/property/search',
+                                path: '/propertymanage/property/search',
                                 name: '住宅查询',
-                                component: () => import('@/views/property/search'),
+                                component: () => import('@/views/propertymanage/property/search'),
                                 meta: { title: '住宅查询', keepAlive: true, permission: ['221', '22101', '2210104'] }
                             }
                         ]
                     },
                     {
-                        path: '/business/add',
+                        path: '/propertymanage/business/add',
                         component: RouteView,
                         meta: { title: '商业房产', keepAlive: true, icon: 'layout', permission: ['221', '22102'] },
-                        redirect: '/business/add',
+                        redirect: '/propertymanage/business/add',
                         children: [
                             {
-                                path: '/business/add',
+                                path: '/propertymanage/business/add',
                                 name: '新增房产向导',
                                 component: () => import('@/views/business/add'),
                                 meta: {
@@ -100,7 +100,7 @@ export const asyncRouterMap = [
                                 }
                             },
                             {
-                                path: '/business/building',
+                                path: '/propertymanage/business/building',
                                 name: '批量增加商业房产',
                                 component: () => import('@/views/business/building'),
                                 meta: {
@@ -110,13 +110,13 @@ export const asyncRouterMap = [
                                 }
                             },
                             {
-                                path: '/business/maintain',
+                                path: '/propertymanage/business/maintain',
                                 name: '房产维护',
                                 component: () => import('@/views/business/maintain'),
                                 meta: { title: '住宅维护', keepAlive: true, permission: ['221', '22102', '2210203'] }
                             },
                             {
-                                path: '/business/search',
+                                path: '/propertymanage/business/search',
                                 name: '房产查询',
                                 component: () => import('@/views/business/search'),
                                 meta: { title: '住宅查询', keepAlive: true, permission: ['221', '22102', '2210204'] }
@@ -129,52 +129,52 @@ export const asyncRouterMap = [
                 path: 'owner',
                 component: RouteView,
                 meta: { title: '业主信息', keepAlive: true, icon: bxAnaalyse, permission: ['223'] },
-                redirect: 'information',
+                redirect: '/owner/information',
                 children: [
                     {
-                        path: 'information',
-                        name: 'information',
+                        path: '/owner/information',
+                        name: '业主信息',
                         component: () => import('@/views/owner/information'),
                         meta: { title: '业主信息', keepAlive: true, permission: ['223'] }
                     },
                     {
-                        path: 'inspection',
-                        name: 'inspection',
+                        path: '/owner/inspection',
+                        name: '业主验房',
                         component: () => import('@/views/owner/inspection'),
                         meta: { title: '业主验房', keepAlive: true, permission: ['223'] }
                     },
                     {
-                        path: 'decorationr',
+                        path: '/owner/decorationr',
                         component: RouteView,
                         meta: { title: '业主装修', keepAlive: true, permission: ['223'] },
-                        redirect: 'enter',
+                        redirect: '/owner/decoration/enter',
                         children: [
                             {
-                                path: 'enter',
+                                path: '/owner/decoration/enter',
                                 name: '装修录入',
                                 component: () => import('@/views/owner/decoration/enter'),
                                 meta: { title: '装修录入', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'approval',
+                                path: '/owner/decoration/approval',
                                 name: '装修审批',
                                 component: () => import('@/views/owner/decoration/approval'),
                                 meta: { title: '装修审批', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'invalid',
+                                path: '/owner/decoration/invalid',
                                 name: '装修作废',
                                 component: () => import('@/views/owner/decoration/invalid'),
                                 meta: { title: '装修作废', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'acceptance',
+                                path: '/owner/decoration/acceptance',
                                 name: '装修验收',
                                 component: () => import('@/views/owner/decoration/acceptance'),
                                 meta: { title: '装修验收', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'search',
+                                path: '/owner/decoration/search',
                                 name: '装修查询',
                                 component: () => import('@/views/owner/decoration/search'),
                                 meta: { title: '装修查询', keepAlive: true, permission: ['223'] }
@@ -182,20 +182,20 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: 'checkin',
-                        name: 'checkin',
+                        path: '/owner/checkin',
+                        name: '业主入住',
                         component: () => import('@/views/owner/checkin'),
                         meta: { title: '业主入住', keepAlive: true, permission: ['223'] }
                     },
                     {
-                        path: 'management',
-                        name: 'management',
+                        path: '/owner/management',
+                        name: '请修管理',
                         component: () => import('@/views/owner/management'),
                         meta: { title: '请修管理', keepAlive: true, permission: ['223'] }
                     },
                     {
-                        path: 'addition',
-                        name: 'addition',
+                        path: '/owner/addition',
+                        name: '业主加建',
                         component: () => import('@/views/owner/addition'),
                         meta: { title: '业主加建', keepAlive: true, permission: ['223'] }
                     }
@@ -205,34 +205,34 @@ export const asyncRouterMap = [
                 path: 'cost',
                 component: RouteView,
                 meta: { title: '费项设置', keepAlive: true, icon: bxAnaalyse, permission: ['223'] },
-                redirect: 'common',
+                redirect: '/cost/common/common',
                 children: [
                     {
-                        path: 'common',
+                        path: '/cost/common/common',
                         component: RouteView,
                         meta: { title: '常规费项', keepAlive: true, permission: ['223'] },
-                        redirect: 'common',
+                        redirect: '/cost/common/common',
                         children: [
                             {
-                                path: 'common',
+                                path: '/cost/common/common',
                                 name: '常规费项设定',
                                 component: () => import('@/views/cost/common/common'),
-                                meta: { title: '费项设定', keepAlive: true, permission: ['223'] }
+                                meta: { title: '常规费项设定', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'distributed',
+                                path: '/cost/common/distributed',
                                 name: '费项分布',
                                 component: () => import('@/views/cost/common/distributed'),
                                 meta: { title: '费项分布', keepAlive: true }
                             },
                             {
-                                path: 'initialization',
+                                path: '/cost/common/initialization',
                                 name: '初始化仪表',
                                 component: () => import('@/views/cost/common/initialization'),
                                 meta: { title: '初始化仪表', keepAlive: true, permission: ['223'] }
                             },
                             {
-                                path: 'floorcoefficient',
+                                path: '/cost/common/floorcoefficient',
                                 name: '楼层系数',
                                 component: () => import('@/views/cost/common/floorcoefficient'),
                                 meta: { title: '楼层系数', keepAlive: true, permission: ['223'] }
@@ -240,16 +240,16 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/cost/pool/public',
+                        path: 'cost/pool/public',
                         component: RouteView,
                         meta: { title: '公摊费项', keepAlive: true, permission: ['226'] },
-                        redirect: '/cost/pool/public',
+                        redirect: 'cost/pool/public',
                         children: [
                             {
-                                path: '/cost/pool/public',
+                                path: 'cost/pool/public',
                                 name: '公摊费项设定',
                                 component: () => import('@/views/cost/pool/public'),
-                                meta: { title: '费项设定', keepAlive: true, permission: ['226'] }
+                                meta: { title: '公摊费项设定', keepAlive: true, permission: ['226'] }
                             },
                             {
                                 path: '/cost/pool/publicassessment',
@@ -260,43 +260,42 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        //  serviceteam  printdocuments
                         path: '/cost/convenient',
-                        name: 'convenient',
+                        name: '便捷费项',
                         component: () => import('@/views/cost/convenient'),
                         meta: { title: '便捷费项', keepAlive: true, permission: ['226'] }
                     },
                     {
                         path: '/cost/casualguest',
-                        name: 'casualguest',
+                        name: '临客费项',
                         component: () => import('@/views/cost/casualguest'),
                         meta: { title: '临客费项', keepAlive: true, permission: ['226'] }
                     },
                     {
                         path: '/cost/serviceteam',
-                        name: 'serviceteam',
+                        name: '客服组设置',
                         component: () => import('@/views/cost/serviceteam'),
                         meta: { title: '客服组设置', keepAlive: true, permission: ['226'] }
                     },
                     {
                         path: '/cost/printdocuments',
-                        name: 'printdocuments',
+                        name: '打印单据设定',
                         component: () => import('@/views/cost/printdocuments'),
                         meta: { title: '打印单据设定', keepAlive: true, permission: ['226'] }
                     }
                 ]
             },
             {
-                path: 'costgeneration',
+                path: '/costgeneration',
                 component: RouteView,
                 meta: { title: '收费管理', keepAlive: true, icon: bxAnaalyse, permission: ['228'] },
-                redirect: '/costgeneration/generaterise',
+                redirect: '/costgeneration/generaterise/chargemanagement',
                 children: [
                     {
-                        path: '/costgeneration/generaterise',
+                        path: '/costgeneration/generaterise/chargemanagement',
                         component: RouteView,
                         meta: { title: '费用生成', keepAlive: true, permission: ['228'] },
-                        redirect: '/costgeneration/generaterise',
+                        redirect: '/costgeneration/generaterise/chargemanagement',
                         children: [
                             {
                                 path: '/costgeneration/generaterise/chargemanagement',
@@ -319,10 +318,10 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/costgeneration/ledgermanagement',
+                        path: '/costgeneration/ledgermanagement/conventionalmodify',
                         component: RouteView,
                         meta: { title: '台帐管理', keepAlive: true, permission: ['228'] },
-                        redirect: '/costgeneration/ledgermanagement',
+                        redirect: '/costgeneration/ledgermanagement/conventionalmodify',
                         children: [
                             {
                                 path: '/costgeneration/ledgermanagement/conventionalmodify',
@@ -345,10 +344,10 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/costgeneration/feecollection',
+                        path: '/costgeneration/feecollection/feecollection',
                         component: RouteView,
                         meta: { title: '费用收取', keepAlive: true, permission: ['228'] },
-                        redirect: '/costgeneration/feecollection',
+                        redirect: '/costgeneration/feecollection/feecollection',
                         children: [
                             {
                                 path: '/costgeneration/feecollection/conventionalcharge',
@@ -371,15 +370,16 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/costgeneration/paymentchanges',
+                        path: '/costgeneration/paymentchanges/paymentchangesconventional',
                         component: RouteView,
                         meta: { title: '收款变更', keepAlive: true, permission: ['228'] },
-                        redirect: '/costgeneration/paymentchanges',
+                        redirect: '/costgeneration/paymentchanges/paymentchangesconventional',
                         children: [
                             {
                                 path: '/costgeneration/paymentchanges/paymentchangesconventional',
                                 name: '常规收款变更',
-                                component: () => import('@/views/costgeneration/paymentchanges/paymentchangesconventional'),
+                                component: () =>
+                                    import('@/views/costgeneration/paymentchanges/paymentchangesconventional'),
                                 meta: { title: '常规收款变更', keepAlive: true, permission: ['228'] }
                             },
                             {
@@ -391,10 +391,10 @@ export const asyncRouterMap = [
                         ]
                     },
                     {
-                        path: '/costgeneration/refundinvalid',
+                        path: '/costgeneration/refundinvalid/invoicerefund',
                         component: RouteView,
                         meta: { title: '退款作废', keepAlive: true, permission: ['228'] },
-                        redirect: '/costgeneration/refundinvalid',
+                        redirect: '/costgeneration/refundinvalid/invoicerefund',
                         children: [
                             {
                                 path: '/costgeneration/refundinvalid/invoicerefund',
@@ -442,10 +442,10 @@ export const asyncRouterMap = [
                         meta: { title: '车位销售', keepAlive: true, permission: ['233'] }
                     },
                     {
-                        path: '/parkingmanagement/parkingrent',
+                        path: '/parkingmanagement/parkingrent/contractmanagement',
                         component: RouteView,
                         meta: { title: '车位出租', keepAlive: true, permission: ['233'] },
-                        redirect: '/parkingmanagement/parkingrent',
+                        redirect: '/parkingmanagement/parkingrent/contractmanagement',
                         children: [
                             {
                                 path: '/parkingmanagement/parkingrent/contractmanagement',
