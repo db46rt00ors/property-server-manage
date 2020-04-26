@@ -92,7 +92,7 @@ export const asyncRouterMap = [
                             {
                                 path: '/propertymanage/business/add',
                                 name: '新增房产向导',
-                                component: () => import('@/views/business/add'),
+                                component: () => import('@/views/propertymanage/business/add'),
                                 meta: {
                                     title: '新增房产向导',
                                     keepAlive: true,
@@ -102,7 +102,7 @@ export const asyncRouterMap = [
                             {
                                 path: '/propertymanage/business/building',
                                 name: '批量增加商业房产',
-                                component: () => import('@/views/business/building'),
+                                component: () => import('@/views/propertymanage/business/building'),
                                 meta: {
                                     title: '批量增加楼宇',
                                     keepAlive: true,
@@ -112,13 +112,13 @@ export const asyncRouterMap = [
                             {
                                 path: '/propertymanage/business/maintain',
                                 name: '房产维护',
-                                component: () => import('@/views/business/maintain'),
+                                component: () => import('@/views/propertymanage/business/maintain'),
                                 meta: { title: '住宅维护', keepAlive: true, permission: ['221', '22102', '2210203'] }
                             },
                             {
                                 path: '/propertymanage/business/search',
                                 name: '房产查询',
-                                component: () => import('@/views/business/search'),
+                                component: () => import('@/views/propertymanage/business/search'),
                                 meta: { title: '住宅查询', keepAlive: true, permission: ['221', '22102', '2210204'] }
                             }
                         ]
