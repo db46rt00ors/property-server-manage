@@ -233,20 +233,6 @@ export default {
 </script>
 
 <style lang='less' scoped>
-ul,
-li {
-    list-style-type: none;
-    list-style: none;
-}
-/deep/ li.ant-tree-treenode-switcher-open,
-/deep/ li.ant-tree-treenode-switcher-close {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-/deep/ ul {
-    list-style-type: none;
-    padding-left: 15px;
-}
 .content {
     background-color: #fff;
     padding: 20px 0;

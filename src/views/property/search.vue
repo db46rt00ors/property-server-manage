@@ -142,14 +142,4 @@ export default {
         width: 330px;
     }
 }
-
-/deep/ li.ant-tree-treenode-switcher-open,
-/deep/ li.ant-tree-treenode-switcher-close {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-/deep/ ul {
-    list-style-type: none;
-    padding-left: 15px;
-}
 </style>

@@ -134,19 +134,6 @@ export default {
 </script>
 
 <style lang='less' scoped>
-ul,
-li {
-    list-style-type: none;
-    list-style: none;
-}
-/deep/ li.ant-tree-treenode-switcher-open,
-/deep/ li.ant-tree-treenode-switcher-close {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-/deep/ ul {
-    padding-left: 15px;
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
