@@ -95,8 +95,8 @@
         :scroll="{ x: 2550 }"
       >
         <div slot="estate" slot-scope="text">
-          <p>{{text.name}}</p>
-          <p>入住时间:{{text.time}}</p>
+          <p>{{ text.name }}</p>
+          <p>入住时间:{{ text.time }}</p>
         </div>
       </a-table>
     </a-row>
@@ -232,7 +232,8 @@ const data = [
         payment_deadline: '2012-03-31',
         received: '是',
         cost_multiple: '1'
-    },{
+    },
+    {
         key: '2',
         estate: {
             name: '菜批市场1号楼1楼1E1102档口',
