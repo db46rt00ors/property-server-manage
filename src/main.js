@@ -18,6 +18,7 @@ import './core/lazy_use'
 import './permission' // permission control
 import './utils/filter' // global filter
 import './components/global.less'
+import './utils/public.less'
 import { Dialog } from '@/components'
 
 Vue.config.productionTip = false

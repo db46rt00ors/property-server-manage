@@ -1,5 +1,5 @@
 <template>
-  <a-row>
+  <a-row class="content">
     <a-form :form="form">
       <a-row>
         <a-form-item label="选择费项" :labelCol="{span: 2}" :wrapperCol="{span: 6}">
@@ -131,7 +131,7 @@
         </a-col>
         <a-col>
           <a-form-item>
-            <a-checkbox @change="chooseHome">是否必须选择房间</a-checkbox>
+            <a-checkbox style="margin-left:10px;" @change="chooseHome">是否必须选择房间</a-checkbox>
           </a-form-item>
         </a-col>
       </a-row>
@@ -407,7 +407,16 @@ export default {
     methods: {
         onChange(selectedKeys, info) {
             console.log(selectedKeys, info)
+            if (selectedKeys.length <= 0) {
+                this.currentfee = '无'
+                return
+            }
             this.currentfee = [...selectedKeys].pop()
+            if (this.currentfee.includes('电费') || this.currentfee.includes('水费')) {
+                this.iswaterorelectricity = true
+            } else {
+                this.iswaterorelectricity = false
+            }
         },
         onChangeCheckbox(e) {
             console.log(e)
@@ -462,6 +471,11 @@ export default {
 </script>
 
 <style scoped lang="less">
+.content {
+    background-color: #fff;
+    padding: 20px;
+    height: 100%;
+}
 .dis-flex {
     display: flex;
 }
