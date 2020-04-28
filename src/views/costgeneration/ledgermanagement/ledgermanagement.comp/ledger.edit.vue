@@ -324,7 +324,4 @@ export default {
 .title {
     line-height: 40px;
 }
-/deep/.ant-form-item-control-wrapper {
-    // width: 50%;
-}
 </style>

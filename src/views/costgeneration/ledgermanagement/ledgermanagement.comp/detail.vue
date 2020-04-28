@@ -1,15 +1,10 @@
 <template>
-  <a-row>
-      mingxi
-  </a-row>
+  <a-row>mingxi</a-row>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style>
-
 </style>
