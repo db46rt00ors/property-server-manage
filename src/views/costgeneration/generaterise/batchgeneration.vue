@@ -258,9 +258,7 @@ export default {
     padding: 20px;
     height: 100%;
 }
-.dis-flex {
-    display: flex;
-}
+
 .ant-row-flex-space-between {
     /deep/.ant-form-item-label {
         width: 6em;
