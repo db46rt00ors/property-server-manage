@@ -33,8 +33,7 @@
         :pagination="pagination"
         :rowSelection="rowSelection"
         :scroll="{ x: 1900, y: 450 }"
-      >
-      </a-table>
+      ></a-table>
     </a-row>
     <add :visibleObj="visibleObj"></add>
   </div>
@@ -280,6 +279,10 @@ export default {
 <style lang="less" scoped>
 .select {
     width: 160px;
+    /deep/ input,
+    /deep/ .ant-select-selection {
+        border-radius: 4px;
+    }
 }
 .retrievingcontent-icon {
     position: absolute;
@@ -287,10 +290,7 @@ export default {
     right: 10px;
     transform: translateY(-50%);
 }
-/deep/ input,
-/deep/ .ant-select-selection {
-    border-radius: 4px;
-}
+
 .setting {
     margin: 10px 0;
 }

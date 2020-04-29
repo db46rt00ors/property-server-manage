@@ -20,7 +20,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item>
-          <a-input v-model="form.retrievingcontent"/>
+          <a-input v-model="form.retrievingcontent" />
           <a-icon type="search" class="retrievingcontent-icon" />
         </a-form-model-item>
         <a-form-model-item label="快速检索">
@@ -236,16 +236,16 @@ export default {
 <style lang="less" scoped>
 .select {
     width: 110px;
+    /deep/ input,
+    /deep/ .ant-select-selection {
+        border-radius: 4px;
+    }
 }
 .retrievingcontent-icon {
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-}
-/deep/ input,
-/deep/ .ant-select-selection {
-    border-radius: 4px;
 }
 .setting {
     margin: 10px 0;
