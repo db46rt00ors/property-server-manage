@@ -161,7 +161,7 @@ export default {
             columns,
             selectedRows: [],
             conventionalObj: {
-                visible: true
+                visible: false
             }
         }
     },

@@ -1,114 +1,74 @@
-.mgt-30 {
-    margin-top: 30px;
+// margin-right
+.mgr(70);
+.mgr(@n, @i: 0) when (@i =< @n) {
+  .mgr-@{i} {
+    margin-right: unit(@i,px);
+  }
+  .mgr(@n, (@i + 5));
 }
-.mgt-10 {
-    margin-top: 10px;
+// margin-left
+.mgl(70);
+.mgl(@n, @i: 0) when (@i =< @n) {
+  .mgl-@{i} {
+    margin-left: unit(@i,px);
+  }
+  .mgl(@n, (@i + 5));
 }
-.mgr-10 {
-    margin-right: 10px;
+// margin-top
+.mgt(70);
+.mgt(@n, @i: 0) when (@i =< @n) {
+  .mgt-@{i} {
+    margin-top: unit(@i,px);
+  }
+  .mgt(@n, (@i + 5));
 }
-.mgr-20 {
-    margin-right: 20px;
+// margin-bottom
+.mgb(70);
+.mgb(@n, @i: 0) when (@i =< @n) {
+  .mgb-@{i} {
+    margin-bottom: unit(@i,px);
+  }
+  .mgb(@n, (@i + 5));
 }
-.mgr-25 {
-    margin-right: 25px;
+// padding-right
+.pdr(70);
+.pdr(@n, @i: 0) when (@i =< @n) {
+  .pdr-@{i} {
+    padding-right: unit(@i,px);
+  }
+  .pdr(@n, (@i + 5));
 }
-.mgr-30 {
-    margin-right: 30px;
+// padding-left
+.pdl(70);
+.pdl(@n, @i: 0) when (@i =< @n) {
+  .pdl-@{i} {
+    padding-left: unit(@i,px);
+  }
+  .pdl(@n, (@i + 5));
 }
-.mgr-35 {
-    margin-right: 35px;
+// padding-top
+.pdt(70);
+.pdt(@n, @i: 0) when (@i =< @n) {
+  .pdt-@{i} {
+    padding-top: unit(@i,px);
+  }
+  .pdt(@n, (@i + 5));
 }
-.mgl-10 {
-    margin-left: 10px;
+// padding-bottom
+.pdb(70);
+.pdb(@n, @i: 0) when (@i =< @n) {
+  .pdb-@{i} {
+    padding-bottom: unit(@i,px);
+  }
+  .pdb(@n, (@i + 5));
 }
-.mgl-20 {
-    margin-left: 20px;
-}
-.mgl-25 {
-    margin-left: 25px;
-}
-.mgl-30 {
-    margin-left: 30px;
-}
-.mgl-35 {
-    margin-left: 35px;
-}
-.mgb-10 {
-    margin-bottom: 10px;
-}
-.mgl-10 {
-    margin-left: 10px;
-}
-.mgt-9 {
-    margin-top: 9px;
-}
-.mgr-7 {
-    margin-right: 7px;
-}
-.mgl-7 {
-    margin-left: 7px;
-}
-.mgt-15 {
-    margin-top: 15px;
-}
-.mgt-20 {
-    margin-top: 20px;
-}
-.mgt-25 {
-    margin-top: 25px;
-}
-.mgt-30 {
-    margin-top: 30px;
-}
-.mgt-35 {
-    margin-top: 35px;
-}
-.mgt-40 {
-    margin-top: 40px;
-}
-.mgb-15 {
-    margin-bottom: 15px;
-}
-.mgb-20 {
-    margin-bottom: 20px;
-}
-.mgb-25 {
-    margin-bottom: 25px;
-}
-.mgb-30 {
-    margin-bottom: 30px;
-}
-.mgb-35 {
-    margin-bottom: 35px;
-}
-.mgb-40 {
-    margin-bottom: 40px;
-}
-
-.line-height-45 {
-    line-height: 45px;
-}
-.line-height-40 {
-    line-height: 40px;
-}
-.line-height-30 {
-    line-height: 30px;
-}
-.line-height-35 {
-    line-height: 35px;
-}
-.line-height-50 {
-    line-height: 50px;
-}
-.line-height-60 {
-    line-height: 60px;
-}
-.line-height-70 {
-    line-height: 70px;
-}
-.line-height-80 {
-    line-height: 80px;
+// line-height
+.line-height(80);
+.line-height(@n, @i: 30) when (@i =< @n) {
+  .line-height-@{i} {
+    line-height: unit(@i,px);
+  }
+  .line-height(@n, (@i + 5));
 }
 .dis-flex {
     display: flex;
