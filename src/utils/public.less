@@ -70,9 +70,32 @@
   }
   .line-height(@n, (@i + 5));
 }
+// font-weight
+.font-weight(1000);
+.font-weight(@n, @i: 0) when (@i =< @n) {
+  .font-weight-@{i} {
+    font-weight: unit(@i);
+  }
+  .font-weight(@n, (@i + 100));
+}
+// font-size
+.font-size(40);
+.font-size(@n, @i: 0) when (@i =< @n) {
+  .font-size-@{i} {
+    font-size: unit(@i,px);
+  }
+  .font-size(@n, (@i + 2));
+}
 .dis-flex {
     display: flex;
 }
 p {
     margin: 0;
 }
+.mgt-4{
+  margin-top: 4px;
+}
+.color-red{
+  color: red;
+}
+
