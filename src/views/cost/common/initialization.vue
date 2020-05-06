@@ -4,7 +4,11 @@
       <a-col :span="6">
         <a-form :form="form" :label-col="labelCol" :wrapper-col="wrapperCol">
           <a-form-item label="请选择住宅:">
-            <a-select v-model="form.region" placeholder="please select your zone">
+            <a-select
+              placeholder="please select your zone"
+              v-decorator="['chooseestate', { rules: [{ required: true, message: 'Please input your note!' }] }]"
+              @change="chooseestateChange"
+            >
               <a-select-option value="1">121小区</a-select-option>
               <a-select-option value="2">122小区</a-select-option>
             </a-select>
@@ -227,6 +231,9 @@ export default {
         },
         onChange(selectedKeys, info) {
             console.log(selectedKeys, info)
+        },
+        chooseestateChange(val) {
+            console.log(val)
         }
     }
 }

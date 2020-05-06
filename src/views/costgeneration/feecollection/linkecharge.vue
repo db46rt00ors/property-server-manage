@@ -60,8 +60,9 @@
             <a-select
               v-decorator="['payment_method', { rules: [{ required: true, message: 'Please input your note!' }] }]"
             >
-              <a-select-option value="1">1</a-select-option>
-              <a-select-option value="2">2</a-select-option>
+              <a-select-option value="1">现金</a-select-option>
+              <a-select-option value="2">支票</a-select-option>
+              <a-select-option value="3">银行卡</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
