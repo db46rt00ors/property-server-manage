@@ -1,8 +1,8 @@
 <template>
   <a-row class="content">
-    <a-form :form="form" layout="inline">
-      <a-row type="flex" justify="start" class="form-row">
-        <a-col :span="6">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
+        <a-col :span="8" :xs="10">
           <a-form-item label="请选择楼盘">
             <a-cascader
               class="cascader"
@@ -12,7 +12,7 @@
             />
           </a-form-item>
         </a-col>
-        <a-col :span="6">
+        <a-col :xs="6">
           <span class="color-red line-height-40">中东首座1号楼1单元101室</span> 已收款记录
         </a-col>
       </a-row>
@@ -159,7 +159,9 @@ export default {
             documentrefundobj: {
                 visible: false,
                 record: null
-            }
+            },
+            labelCol: { span: 8 },
+            wrapperCol: { span: 16 }
         }
     },
     methods: {
@@ -175,7 +177,7 @@ export default {
         }
     },
     components: {
-      documentRefund
+        documentRefund
     }
 }
 </script>
@@ -194,14 +196,8 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
-    .form-row {
-        /deep/.ant-form-item-label {
-            width: 7em;
-            text-align: right;
-        }
-        /deep/.ant-form-item-control-wrapper {
-            width: 70%;
-        }
+    /deep/.ant-calendar-picker {
+        width: 100%;
     }
 }
 </style>
