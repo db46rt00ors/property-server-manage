@@ -8,10 +8,10 @@
         </a-form-item>
       </a-col>
     </a-row>
-    <a-form :form="form">
-      <a-row type="flex" justify="start" class="formitem">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="9">
-          <a-form-item label="检索条件" class="dis-flex" :labelCol="{span: 4}" :wrapperCol="{span: 20}">
+          <a-form-item label="检索条件" :labelCol="{span: 4}" :wrapperCol="{span: 20}">
             <a-select>
               <a-select-option value="1">1</a-select-option>
               <a-select-option value="2">2</a-select-option>
@@ -24,62 +24,50 @@
         <a-col :span="6">
           <a-button>删除整个台账</a-button>
           <a-button class="mgl-10 mgr-10">导出</a-button>
-          <a-button>关闭</a-button>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="formitem">
+      <a-row>
         <a-col :span="6">
-          <a-form-item
-            label="上次使用止期"
-            class="dis-flex"
-            :labelCol="{span: 6}"
-            :wrapperCol="{span: 18}"
-          >
+          <a-form-item label="上次使用止期">
             <a-date-picker></a-date-picker>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item
-            label="本次使用起期"
-            class="dis-flex"
-            :labelCol="{span: 6}"
-            :wrapperCol="{span: 18}"
-          >
+          <a-form-item label="本次使用起期">
             <a-date-picker></a-date-picker>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item
-            label="本次使用止期"
-            class="dis-flex"
-            :labelCol="{span: 6}"
-            :wrapperCol="{span: 18}"
-          >
+          <a-form-item label="本次使用止期">
             <a-date-picker></a-date-picker>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-button>更新</a-button>
+          <a-form-item>
+            <a-button>更新</a-button>
+          </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="formitem">
+      <a-row>
         <a-col :span="6">
-          <a-form-item label="缴费期限" class="dis-flex" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+          <a-form-item label="缴费期限">
             <a-date-picker></a-date-picker>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label="上次读数" class="dis-flex" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+          <a-form-item label="上次读数">
             <a-input />
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label="本次读数" class="dis-flex" :labelCol="{span: 6}" :wrapperCol="{span: 18}">
+          <a-form-item label="本次读数">
             <a-input />
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-button>删除</a-button>
+          <a-form-item>
+            <a-button>删除</a-button>
+          </a-form-item>
         </a-col>
       </a-row>
     </a-form>
@@ -280,7 +268,9 @@ export default {
             },
             data,
             columns,
-            selectedRows: []
+            selectedRows: [],
+            labelCol: { span: 8 },
+            wrapperCol: { span: 14 }
         }
     },
     computed: {
@@ -315,10 +305,8 @@ export default {
     margin-top: 0px;
     margin-bottom: 0px;
     width: 100%;
-}
-.formitem {
-    /deep/.ant-input {
-        width: 171px;
+    /deep/.ant-calendar-picker {
+        width: 100%;
     }
 }
 .title {

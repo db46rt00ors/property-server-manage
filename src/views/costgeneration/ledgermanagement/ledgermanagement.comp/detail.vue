@@ -1,7 +1,7 @@
 <template>
   <a-row class="ledger-content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="space-between" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select>
@@ -65,7 +65,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="费用起期自">
             <a-select>
@@ -93,7 +93,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="业主姓名">
             <a-input />
@@ -123,7 +123,7 @@
           </div>
         </a-table>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="上次费用止期">
             <a-date-picker></a-date-picker>
@@ -145,7 +145,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="上次读数">
             <a-select>
@@ -368,7 +368,9 @@ export default {
             },
             data,
             columns,
-            selectedRows: []
+            selectedRows: [],
+            labelCol: { span: 8 },
+            wrapperCol: { span: 16 }
         }
     },
     computed: {
@@ -399,18 +401,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
-    }
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
@@ -422,5 +412,8 @@ export default {
 }
 .ledger-content {
     height: 700px;
+    /deep/.ant-calendar-picker {
+        width: 100%;
+    }
 }
 </style>

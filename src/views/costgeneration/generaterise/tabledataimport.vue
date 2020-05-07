@@ -33,7 +33,7 @@
           </a-col>
           <a-col>
             <a-button
-              class="mgt-9 mgr-7 mgl-7"
+              class="mgt-10 mgr-5 mgl-5"
               type="primary"
               @click="handleUpload"
               :disabled="fileList.length === 0"
@@ -41,7 +41,7 @@
             >{{ uploading ? '上传中' : '开始上传' }}</a-button>
           </a-col>
           <a-col>
-            <a-button type="primary" class="mgt-9">确认导入</a-button>
+            <a-button type="primary" class="mgt-10">确认导入</a-button>
           </a-col>
         </a-row>
       </a-form>

@@ -20,3 +20,8 @@ export default {
     mounted() {}
 }
 </script>
+<style lang="less" scoped>
+  #app,.ant-modal-root{
+    min-width: 1100px;
+  }
+</style>

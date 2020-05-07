@@ -1,7 +1,7 @@
 <template>
   <a-row class="ledger-content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="space-between" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select>
@@ -162,7 +162,9 @@ export default {
             selectedRows: [],
             ledgerObj: {
                 visible: false
-            }
+            },
+            labelCol: { span: 8 },
+            wrapperCol: { span: 16 }
         }
     },
     computed: {
@@ -200,22 +202,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
-    }
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
-    width: 90%;
 }
 .ant-col {
     line-height: 40px;
@@ -223,5 +212,8 @@ export default {
 }
 .ledger-content {
     height: 500px;
+    /deep/.ant-calendar-picker {
+        width: 100%;
+    }
 }
 </style>
