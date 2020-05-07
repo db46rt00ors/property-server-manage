@@ -1,7 +1,7 @@
 <template>
   <a-row class="content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="space-between" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="费用起期">
             <a-date-picker></a-date-picker>
@@ -59,7 +59,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select>
@@ -92,7 +92,7 @@
           <a-button type="primary" icon="plus-circle" class="mgl-10">添加</a-button>
           <a-button type="primary" icon="delete" class="mgl-10">删除</a-button>
         </a-col>
-        <a-col class="right mgr-50">
+        <a-col class="right mgr-30">
           <a-input class="mgr-20" placeholder="请输入房间名称"></a-input>
           <a-button type="primary">定位房间</a-button>
         </a-col>
@@ -141,7 +141,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row type="flex" justify="start">
         <a-col :span="6">
           <a-form-item label="收款方式">
             <a-select v-decorator="['payment_method']">
@@ -297,7 +297,9 @@ export default {
             },
             data,
             columns,
-            selectedRows: []
+            selectedRows: [],
+            labelCol: { span: 8 },
+            wrapperCol: { span: 14 }
         }
     },
     computed: {
@@ -332,22 +334,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-    }
-    /deep/.ant-calendar-picker {
-            width: 100%;
-        }
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
-    width: 90%;
 }
 .ant-col {
     line-height: 40px;
@@ -357,6 +346,9 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
+    /deep/.ant-calendar-picker {
+        width: 100%;
+    }
 }
 .payment {
     /deep/ input {

@@ -1,7 +1,7 @@
 <template>
   <a-row class="link-content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="start" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -28,7 +28,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select
@@ -52,7 +52,9 @@
         </a-col>
       </a-row>
       <a-row class="mgl-30 mgt-20 font-size-20">
-        应收金额: <span class="color-red font-weight-700"> 0.00 </span> 实收金额: <span class="color-red font-weight-700"> 0.00 </span>
+        应收金额:
+        <span class="color-red font-weight-700">0.00</span> 实收金额:
+        <span class="color-red font-weight-700">0.00</span>
       </a-row>
       <a-row type="flex" justify="start" class="form-row mgt-20">
         <a-col :span="6">
@@ -89,7 +91,7 @@
         </a-col>
       </a-row>
       <a-row>
-        <a-col :span="6" class="mgt-20 mgl-20">
+        <a-col :span="24" class="mgt-20 mgl-20">
           <a-button type="primary">确认缴费</a-button>
           <a-button type="primary" class="mgr-10 mgl-10">清空</a-button>
           <a-button type="primary">临客收费打印</a-button>
@@ -103,7 +105,9 @@
 export default {
     data() {
         return {
-            form: this.$form.createForm(this)
+            form: this.$form.createForm(this),
+            labelCol: { span: 8 },
+            wrapperCol: { span: 14 }
         }
     },
     methods: {
@@ -119,22 +123,12 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
-    .form-row {
-        /deep/.ant-form-item-label {
-            width: 7em;
-            text-align: right;
-        }
-        /deep/.ant-form-item-control-wrapper {
-            width: 70%;
-            /deep/.ant-calendar-picker {
-                width: 100%;
-            }
-        }
+    /deep/.ant-calendar-picker {
+        width: 100%;
     }
     .ant-form-item {
         margin-top: 0px;
         margin-bottom: 0px;
-        width: 90%;
     }
 }
 </style>
