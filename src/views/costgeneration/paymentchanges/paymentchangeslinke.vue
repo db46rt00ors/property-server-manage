@@ -1,7 +1,7 @@
 <template>
   <a-row class="content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="start" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select v-decorator="['chooseestate']">
@@ -29,14 +29,14 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="备注">
             <a-input v-decorator="['remark']" />
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label="收款日期自-至">
+          <a-form-item label="收款日期自-至" :labelCol="{span: 4}" :wrapperCol="{span: 18}">
             <a-range-picker v-decorator="['payment_date']" />
           </a-form-item>
         </a-col>
@@ -131,7 +131,9 @@ export default {
             paymentchangesobj: {
                 visible: false,
                 record: null
-            }
+            },
+            labelCol: { span: 8 },
+            wrapperCol: { span: 12 }
         }
     },
     computed: {
@@ -184,22 +186,12 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
-    .form-row {
-        /deep/.ant-form-item-label {
-            width: 7em;
-            text-align: right;
-        }
-        /deep/.ant-form-item-control-wrapper {
-            width: 70%;
-        }
-        /deep/.ant-calendar-picker {
+    /deep/.ant-calendar-picker {
             width: 100%;
         }
-    }
     .ant-form-item {
         margin-top: 0px;
         margin-bottom: 0px;
-        width: 90%;
     }
 
     .left {

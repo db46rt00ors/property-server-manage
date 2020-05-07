@@ -1,7 +1,7 @@
 <template>
   <a-row class="content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="start" class="form-row">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="收款单号">
             <a-input v-decorator="['receipt_number']" />
@@ -62,9 +62,9 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row>
         <a-col :span="12">
-          <a-form-item label="收费日期">
+          <a-form-item label="收费日期" :labelCol="{span: 4}" :wrapperCol="{span: 19}">
             <a-range-picker
               @change="onChangePicker"
               v-decorator="['charge_date', { rules: [{ required: true, message: 'Please input your note!' }] }]"
@@ -85,7 +85,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row type="flex" justify="start" class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="优惠金额">
             <a-select v-decorator="['discounted_price']">
@@ -193,9 +193,11 @@ export default {
             columns,
             selectedRows: [],
             paymentchangesobj: {
-              visible: false,
-              record: null
-            }
+                visible: false,
+                record: null
+            },
+            labelCol: { span: 8 },
+            wrapperCol: { span: 14 }
         }
     },
     computed: {
@@ -230,7 +232,7 @@ export default {
         }
     },
     components: {
-      paymentchangesEdit
+        paymentchangesEdit
     }
 }
 </script>
@@ -240,22 +242,15 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
-    .form-row {
-        /deep/.ant-form-item-label {
-            width: 7em;
-            text-align: right;
-        }
-        /deep/.ant-form-item-control-wrapper {
-            width: 70%;
-            /deep/.ant-calendar-picker {
-                width: 100%;
-            }
-        }
+    /deep/.ant-calendar-picker {
+        width: 100%;
+    }
+    /deep/.ant-calendar-picker-input {
+        width: 100%;
     }
     .ant-form-item {
         margin-top: 0px;
         margin-bottom: 0px;
-        width: 90%;
     }
 
     .left {
