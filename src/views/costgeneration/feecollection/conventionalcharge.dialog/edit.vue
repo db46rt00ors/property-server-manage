@@ -102,11 +102,6 @@ export default {
     margin-bottom: 0px;
     width: 100%;
 }
-.formitem {
-    /deep/.ant-input {
-        // width: 171px;
-    }
-}
 .title {
     line-height: 40px;
 }

@@ -183,7 +183,8 @@ export default {
                 : moment(this.paymentchangesobj.record.payment_date, 'YYYY/MM/DD')
         },
         payment_date_end() {
-            return this.paymentchangesobj.record.payment_date_end === undefined
+            return this.paymentchangesobj.record === null ||
+                this.paymentchangesobj.record.payment_date_end === undefined
                 ? undefined
                 : moment(this.paymentchangesobj.record.payment_date_end, 'YYYY/MM/DD')
         }
@@ -209,9 +210,9 @@ export default {
     }
     /deep/.ant-form-item-control-wrapper {
         width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
+    }
+    /deep/.ant-calendar-picker {
+        width: 100%;
     }
 }
 .ant-form-item {

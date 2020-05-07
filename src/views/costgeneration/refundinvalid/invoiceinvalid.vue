@@ -215,18 +215,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
-    }
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
@@ -240,6 +228,18 @@ export default {
     height: 800px;
     background-color: #fff;
     padding: 10px;
+    .form-row {
+        /deep/.ant-form-item-label {
+            width: 7em;
+            text-align: right;
+        }
+        /deep/.ant-form-item-control-wrapper {
+            width: 70%;
+        }
+        /deep/.ant-calendar-picker {
+            width: 100%;
+        }
+    }
 }
 .payment {
     /deep/ input {

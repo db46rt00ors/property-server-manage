@@ -339,10 +339,10 @@ export default {
     }
     /deep/.ant-form-item-control-wrapper {
         width: 70%;
-        /deep/.ant-calendar-picker {
+    }
+    /deep/.ant-calendar-picker {
             width: 100%;
         }
-    }
 }
 .ant-form-item {
     margin-top: 5px;
