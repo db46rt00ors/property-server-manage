@@ -7,9 +7,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store/'
 import { VueAxios } from './utils/request'
-import { FormModel, cascader } from 'ant-design-vue'
-import aTransfer from 'ant-design-vue/es/transfer'
-import 'ant-design-vue/es/transfer/style'
 // mock
 // WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
 import './mock'
@@ -24,11 +21,8 @@ import { Dialog } from '@/components'
 Vue.config.productionTip = false
 
 // mount axios Vue.$http and this.$http
-Vue.component('a-transfer', aTransfer)
 Vue.use(VueAxios)
 Vue.use(Dialog)
-Vue.use(FormModel)
-Vue.use(cascader)
 new Vue({
     router,
     store,

@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <h1>我的邮件</h1>
-  </div>
+  <h1>我的邮件1</h1>
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
+
+<style>
+
+</style>

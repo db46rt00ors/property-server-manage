@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>我的消息</h1>
-  </div>
+  <h1>我的消息1</h1>
 </template>
 
 <script>
