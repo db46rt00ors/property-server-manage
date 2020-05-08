@@ -93,5 +93,8 @@ export default {
     min-height: 500px;
     background-color: #fff;
     padding: 20px;
+    .ant-form-item {
+        margin-bottom: 0px;
+    }
 }
 </style>
