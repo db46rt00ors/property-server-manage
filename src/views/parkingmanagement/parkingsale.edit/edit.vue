@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-modal
-      :title="`${parkingsaleobj.record === null ? '新增' : `编辑-`+parkingsaleobj.record.parking_code}`"
+      :title="`${parkingsaleobj.parking_status_val === null ? '' : `编辑-` + (parkingsaleobj.parking_status_val === 1 ? '已售' : '空闲')}`"
       width="50%"
       v-model="parkingsaleobj.visible"
       :closable="false"

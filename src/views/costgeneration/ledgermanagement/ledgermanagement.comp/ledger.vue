@@ -212,6 +212,8 @@ export default {
 }
 .ledger-content {
     height: 500px;
+    background-color: #fff;
+    padding: 20px;
     /deep/.ant-calendar-picker {
         width: 100%;
     }

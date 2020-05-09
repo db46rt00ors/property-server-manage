@@ -68,7 +68,7 @@
           slot="setting"
           slot-scope="text, record"
           @click="edit(record)"
-        >{{parking_status_val === 1 ? '操作' : '修改'}}</a>
+        >{{ parking_status_val === 1 ? '操作' : '修改' }}</a>
       </a-table>
     </a-row>
     <parkingsale-edit :parkingsaleobj="parkingsaleobj"></parkingsale-edit>
@@ -120,7 +120,8 @@ export default {
             columns,
             parkingsaleobj: {
                 visible: false,
-                record: null
+                record: null,
+                parking_status_val: null
             },
             parking_status_val: 1
         }
@@ -219,10 +220,8 @@ export default {
         paginationChange(pagination, filters, sorter) {
             console.log('params', pagination, filters, sorter)
         },
-        showAddModal() {
-            this.parkingsaleobj.visible = true
-        },
         edit(record) {
+            this.parkingsaleobj.parking_status_val = this.parking_status_val
             this.parkingsaleobj.visible = true
             this.parkingsaleobj.record = record
         },
