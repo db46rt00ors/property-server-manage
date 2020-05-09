@@ -176,7 +176,6 @@ export default {
             this.parkinginformationobj.record.status = '空闲'
         },
         edit(record) {
-            console.log(record)
             this.parkinginformationobj.visible = true
             this.parkinginformationobj.isAdd = false
             for (const k in record) {
