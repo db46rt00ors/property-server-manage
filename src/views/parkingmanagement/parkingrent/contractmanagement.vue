@@ -172,31 +172,11 @@ export default {
             },
             data,
             columns,
-            selectedRows: [],
             labelCol: { span: 8 },
             wrapperCol: { span: 16 },
             parkinginformationobj: {
                 visible: false,
                 record: null
-            }
-        }
-    },
-    computed: {
-        rowSelection() {
-            return {
-                onChange: (selectedRowKeys, selectedRows) => {
-                    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
-                },
-                onSelect: (record, selected, selectedRows) => {
-                    console.log(record, selected, selectedRows)
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.selectedRows = selectedRows
-                },
-                onSelectAll: (selected, selectedRows, changeRows) => {
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.selectedRows = selectedRows
-                    console.log(selected, selectedRows, changeRows)
-                }
             }
         }
     },
