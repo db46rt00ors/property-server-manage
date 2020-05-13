@@ -289,9 +289,6 @@ export default {
 
 <style lang='less' scoped>
 .content {
-    background-color: #fff;
-    padding: 20px 0;
-    min-height: 500px;
     .title {
         text-indent: 5px;
         color: #333;

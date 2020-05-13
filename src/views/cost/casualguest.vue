@@ -156,12 +156,6 @@ export default {
 </script>
 
 <style lang='less' scoped>
-.content {
-    // min-height:600px;
-    height: 100%;
-    padding: 20px;
-    background-color: #fff;
-}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;

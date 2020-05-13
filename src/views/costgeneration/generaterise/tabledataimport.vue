@@ -102,20 +102,17 @@ export default {
 
 <style lang="less" scoped>
 .content {
-    background-color: #fff;
-    padding: 20px;
-    height: 100%;
-}
-.title {
-    h1 {
-        font-size: 20px;
+    .title {
+        h1 {
+            font-size: 20px;
+        }
+        h6 {
+            color: red;
+        }
     }
-    h6 {
-        color: red;
+    .ant-form-item {
+        margin-top: 5px;
+        margin-bottom: 0px;
     }
-}
-.ant-form-item {
-    margin-top: 5px;
-    margin-bottom: 0px;
 }
 </style>

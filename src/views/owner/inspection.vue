@@ -168,14 +168,12 @@ export default {
 
 <style lang="less" scoped>
 .content {
-    background-color: #fff;
-    padding: 20px;
-}
-.ant-form-item {
-    margin-bottom: 0;
-}
-.setting button {
-    margin-top: 4px;
-    margin-right: 10px;
+    .ant-form-item {
+        margin-bottom: 0;
+    }
+    .setting button {
+        margin-top: 4px;
+        margin-right: 10px;
+    }
 }
 </style>

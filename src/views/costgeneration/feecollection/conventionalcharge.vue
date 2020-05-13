@@ -260,9 +260,6 @@ export default {
 
 <style lang='less' scoped>
 .content {
-    min-height: 600px;
-    padding: 20px;
-    background-color: #fff;
     .ant-form-item {
         margin-top: 0px;
         margin-bottom: 0px;

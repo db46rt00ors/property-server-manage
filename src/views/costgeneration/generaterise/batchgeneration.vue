@@ -253,12 +253,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-.content {
-    background-color: #fff;
-    padding: 20px;
-    height: 100%;
-}
-
 .ant-row-flex-space-between {
     /deep/.ant-form-item-label {
         width: 6em;
