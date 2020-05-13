@@ -1,15 +1,15 @@
 <template>
   <div>
     <a-modal title="导入业主信息(Excel)到数据库" width="50%" v-model="visibleObj.importexcelvisible">
-      <a-form-model :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-row>
           <a-col :span="8">
-            <a-form-model-item label="所属公司" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
+            <a-form-item label="所属公司" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
               <a-select>
                 <a-select-option value="1">所属公司xx</a-select-option>
                 <a-select-option value="2">所属公司cc</a-select-option>
               </a-select>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
 
           <a-col :span="8" offset="2">
@@ -18,13 +18,13 @@
         </a-row>
         <a-row>
           <a-col :span="8">
-            <a-form-model-item label="选择Excel文档" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
+            <a-form-item label="选择Excel文档" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
               <a-upload :fileList="fileList" :remove="handleRemove" :beforeUpload="beforeUpload">
                 <a-button>
                   <a-icon type="upload" />选择上传文件
                 </a-button>
               </a-upload>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
           <a-col :span="3" offset="2">
             <a-button
@@ -39,7 +39,7 @@
             <a-button style="margin-top: 4px;" @click="handleCancel">关闭</a-button>
           </a-col>
         </a-row>
-      </a-form-model>
+      </a-form>
     </a-modal>
   </div>
 </template>

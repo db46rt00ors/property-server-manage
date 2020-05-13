@@ -6,120 +6,118 @@
     okText="保存"
     cancelText="关闭"
     :destroyOnClose="true"
-    @ok="() => ok()"
+    @ok="(e) => ok(e)"
   >
-    <a-form-model
+    <a-form
       :label-col="labelCol"
       :wrapper-col="wrapperCol"
-      ref="ruleForm"
-      :model="form"
-      :rules="rules"
+      :form="form"
     >
       <a-row>
         <a-col :span="12">
-          <a-form-model-item label="选择房产" prop="chooseproperty">
-            <a-select v-model="form.chooseproperty">
+          <a-form-item label="选择房产">
+            <a-select v-decorator="['chooseproperty',{ rules: [ { required: true, message: '必填项!' } ] }]">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-model-item label="楼宇名称" prop="buildingname">
-            <a-select v-model="form.buildingname">
+          <a-form-item label="楼宇名称">
+            <a-select v-decorator="['buildingname',{ rules: [ { required: true, message: '必填项!' } ] }]">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :span="12">
-          <a-form-model-item label="单元楼层" prop="unitfloor">
-            <a-select v-model="form.unitfloor">
+          <a-form-item label="单元楼层">
+            <a-select v-decorator="['unitfloor',{ rules: [ { required: true, message: '必填项!' } ] }]">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-model-item label="房间名称" prop="roomname">
-            <a-select v-model="form.roomname">
+          <a-form-item label="房间名称">
+            <a-select v-decorator="['roomname',{ rules: [ { required: true, message: '必填项!' } ] }]">
+              <a-select-option value="1">房间名称111</a-select-option>
+              <a-select-option value="0">房间名称222</a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row>
+        <a-col :span="12">
+          <a-form-item label="验收项目">
+            <a-select v-decorator="['acceptanceitems',{ rules: [ { required: true, message: '必填项!' } ] }]">
+              <a-select-option value="shanghai">Zone one</a-select-option>
+              <a-select-option value="beijing">Zone two</a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="验收日期">
+            <a-date-picker
+              v-decorator="['acceptancedate',{ rules: [ { required: true, message: '必填项!' } ] }]"
+              type="date"
+              placeholder="Pick a date"
+              style="width: 100%;"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row>
+        <a-col :span="12">
+          <a-form-item label="确认日期">
+            <a-date-picker
+              v-decorator="['confirmationdate',{ rules: [ { required: true, message: '必填项!' } ] }]"
+              type="date"
+              placeholder="Pick a date"
+              style="width: 100%;"
+            />
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="是否合格">
+            <a-select v-decorator="['isqualified' ,{ rules: [ { required: true, message: '必填项!' } ] }]">
               <a-select-option value="1">是</a-select-option>
               <a-select-option value="0">否</a-select-option>
             </a-select>
-          </a-form-model-item>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col :span="12">
-          <a-form-model-item label="验收项目" prop="acceptanceitems">
-            <a-select v-model="form.acceptanceitems">
-              <a-select-option value="shanghai">Zone one</a-select-option>
-              <a-select-option value="beijing">Zone two</a-select-option>
-            </a-select>
-          </a-form-model-item>
-        </a-col>
-        <a-col :span="12">
-          <a-form-model-item label="验收日期" prop="acceptancedate">
-            <a-date-picker
-              v-model="form.acceptancedate"
-              type="date"
-              placeholder="Pick a date"
-              style="width: 100%;"
-            />
-          </a-form-model-item>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col :span="12">
-          <a-form-model-item label="确认日期" prop="confirmationdate">
-            <a-date-picker
-              v-model="form.confirmationdate"
-              type="date"
-              placeholder="Pick a date"
-              style="width: 100%;"
-            />
-          </a-form-model-item>
-        </a-col>
-        <a-col :span="12">
-          <a-form-model-item label="是否合格" prop="isqualified">
-            <a-select v-model="form.isqualified">
-              <a-select-option value="shanghai">Zone one</a-select-option>
-              <a-select-option value="beijing">Zone two</a-select-option>
-            </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :span="24">
-          <a-form-model-item label="验收人员" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
-            <a-input />
-          </a-form-model-item>
+          <a-form-item label="验收人员" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
+            <a-input v-decorator="['acceptance_personnel']"/>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :span="24">
-          <a-form-model-item label="补充备注" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
-            <a-input />
-          </a-form-model-item>
+          <a-form-item label="补充备注" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
+            <a-input v-decorator="['remark']"/>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :span="24">
-          <a-form-model-item label="业主意见" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
-            <a-input />
-          </a-form-model-item>
+          <a-form-item label="业主意见" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
+            <a-input v-decorator="['owner_opinion']"/>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :span="24">
-          <a-form-model-item label="房管员意见" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
-            <a-input />
-          </a-form-model-item>
+          <a-form-item label="房管员意见" :labelCol="{span: 3}" :wrapperCol="{span: 20}">
+            <a-input v-decorator="['housekeeper_opinion']"/>
+          </a-form-item>
         </a-col>
       </a-row>
-    </a-form-model>
+    </a-form>
   </a-modal>
 </template>
 
@@ -139,41 +137,17 @@ export default {
         return {
             labelCol: { lg: { span: 6 }, sm: { span: 6 } },
             wrapperCol: { lg: { span: 16 }, sm: { span: 16 } },
-            form: {
-                chooseproperty: [],
-                buildingname: [],
-                unitfloor: [],
-                roomname: [],
-                acceptanceitems: [],
-                acceptancedate: undefined,
-                confirmationdate: undefined,
-                isqualified: []
-            },
-            rules: {
-                chooseproperty: [{ required: true, message: '选择房产必须填写', trigger: 'change' }],
-                buildingname: [{ required: true, message: '楼宇名称必须填写', trigger: 'change' }],
-                unitfloor: [{ required: true, message: '单元楼层必须填写', trigger: 'change' }],
-                roomname: [{ required: true, message: '房间名称必须填写', trigger: 'change' }],
-                acceptanceitems: [{ required: true, message: '验收项目必须填写', trigger: 'change' }],
-                acceptancedate: [{ required: true, message: '验收日期必须填写', trigger: 'change' }],
-                confirmationdate: [{ required: true, message: '确认日期必须填写', trigger: 'change' }],
-                isqualified: [{ required: true, message: '是否合格必须填写', trigger: 'change' }]
-            }
+            form: this.$form.createForm(this)
         }
     },
     methods: {
-        ok() {
-            this.$refs.ruleForm.validate(valid => {
-                if (valid) {
-                    this.$notification.success({
-                        message: '提示',
-                        duration: 3,
-                        description: '保存成功，请新增下一条记录！！'
-                    })
-                } else {
-                    console.log('error submit!!')
-                    return false
+        ok(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return
                 }
+                console.log('Received values of form: ', values)
             })
         }
     }

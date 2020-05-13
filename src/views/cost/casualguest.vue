@@ -4,7 +4,7 @@
       <a-col :span="6">
         <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
           <a-form-item label="请选择住宅">
-            <a-select placeholder="please select your zone" @change="houseChange">
+            <a-select placeholder="please select your zone" @change="houseChange" v-decorator="['select_community']">
               <a-select-option value="1">121小区</a-select-option>
               <a-select-option value="2">122小区</a-select-option>
             </a-select>
@@ -21,45 +21,56 @@
       </a-col>
       <a-col :span="18">
         <a-row type="flex" justify="end">
-          <a-button @click="save">保存</a-button>
-          <a-button @click="add" style="margin: 0 10px;">新增</a-button>
-          <a-button @click="del">删除</a-button>
+          <a-button type="primary" @click="save">保存</a-button>
+          <a-button type="primary" @click="add" style="margin: 0 10px;">新增</a-button>
+          <a-button type="primary" @click="del">删除</a-button>
         </a-row>
         <a-form :form="form" :label-col="{ span: 10 }" :wrapper-col="{ span: 14 }">
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="选择楼盘" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
-                <a-input></a-input>
-              </a-form-model-item>
+              <a-form-item label="选择楼盘" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+                <a-select
+                  placeholder="please select your zone"
+                  @change="estateChange"
+                  v-decorator="['choose_estate']"
+                >
+                  <a-select-option value="1">中东首座</a-select-option>
+                  <a-select-option value="2">盈科大厦</a-select-option>
+                </a-select>
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="8">
-              <a-form-model-item label="费项名称">
-                <a-input></a-input>
-              </a-form-model-item>
+              <a-form-item label="费项名称">
+                <a-input v-decorator="['fee_name']" />
+              </a-form-item>
             </a-col>
             <a-col :span="8">
-              <a-form-model-item label="单位价格">
-                <a-input></a-input>
-              </a-form-model-item>
+              <a-form-item label="单位价格">
+                <a-input v-decorator="['price']" />
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="上级费项" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
-                <a-select placeholder="please select your zone" @change="feesChange">
+              <a-form-item label="上级费项" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+                <a-select
+                  placeholder="please select your zone"
+                  @change="feesChange"
+                  v-decorator="['superior_fee']"
+                >
                   <a-select-option value="1">121小区</a-select-option>
                   <a-select-option value="2">122小区</a-select-option>
                 </a-select>
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="费项说明" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
-                <a-input />
-              </a-form-model-item>
+              <a-form-item label="费项说明" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+                <a-input v-decorator="['fee_description']" />
+              </a-form-item>
             </a-col>
           </a-row>
         </a-form>
@@ -126,7 +137,18 @@ export default {
         feesChange(value) {
             console.log(value)
         },
-        save() {},
+        estateChange(value) {
+            console.log(value)
+        },
+        save(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return
+                }
+                console.log('Received values of form: ', values)
+            })
+        },
         add() {},
         del() {}
     }
@@ -134,6 +156,12 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.content {
+    // min-height:600px;
+    height: 100%;
+    padding: 20px;
+    background-color: #fff;
+}
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;

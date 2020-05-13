@@ -1,80 +1,80 @@
 <template>
   <div class="content">
-    <a-form-model :label-col="labelCol" :wrapper-col="wrapperCol">
+    <a-form :form="form" :label-col="labelCol" :wrapper-col="wrapperCol">
       <a-row>
         <a-col :span="6">
-          <a-form-model-item label="选择楼盘">
-            <a-select>
+          <a-form-item label="选择楼盘">
+            <a-select v-decorator="['propertys']">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-model-item label="楼宇">
-            <a-select>
+          <a-form-item label="楼宇">
+            <a-select v-decorator="['buildings']">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-model-item label="单元/楼层">
-            <a-select>
+          <a-form-item label="单元/楼层">
+            <a-select v-decorator="['unit']">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-model-item label="房间">
-            <a-select>
+          <a-form-item label="房间">
+            <a-select v-decorator="['rooms']">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
       </a-row>
 
       <a-row>
         <a-col :span="6">
-          <a-form-model-item label="申请人">
-            <a-input></a-input>
-          </a-form-model-item>
+          <a-form-item label="申请人">
+            <a-input v-decorator="['applicant']" />
+          </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-model-item label="请修内容">
-            <a-input></a-input>
-          </a-form-model-item>
+          <a-form-item label="请修内容">
+            <a-input v-decorator="['please_repair_content']" />
+          </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-model-item label="状态">
-            <a-select>
+          <a-form-item label="状态">
+            <a-select v-decorator="['status']">
               <a-select-option value="shanghai">Zone one</a-select-option>
               <a-select-option value="beijing">Zone two</a-select-option>
             </a-select>
-          </a-form-model-item>
+          </a-form-item>
         </a-col>
       </a-row>
       <a-row class="table-content">
-        <a-form-model-item :wrapperCol="{span: 23}">
+        <a-form-item :wrapperCol="{span: 23}">
           <a-row class="setting">
             <a-col class="left">
-              <a-button type="primary" icon="search">查询</a-button>
-              <a-button type="primary" icon="reload">重置</a-button>
+              <a-button type="primary" icon="search" @click="search">查询</a-button>
+              <a-button type="primary" icon="reload" @click="reset">重置</a-button>
               <a-button type="primary" icon="plus-circle" @click="showAddModal">新增</a-button>
               <a-button type="primary" icon="minus-circle">删除</a-button>
               <a-button type="primary" icon="file">导出</a-button>
             </a-col>
             <a-col class="right">
-              <a-input></a-input>
+              <a-input v-decorator="['locate_the_room']" />
               <a-button type="primary">定位房间</a-button>
             </a-col>
           </a-row>
-        </a-form-model-item>
+        </a-form-item>
         <my-table :columns="columns" :data="data" :pagination="pagination"></my-table>
       </a-row>
-    </a-form-model>
+    </a-form>
     <add :visibleObj="visibleObj"></add>
   </div>
 </template>
@@ -198,6 +198,7 @@ console.log(data)
 export default {
     data() {
         return {
+            form: this.$form.createForm(this),
             labelCol: { lg: { span: 6 }, sm: { span: 6 } },
             wrapperCol: { lg: { span: 18 }, sm: { span: 18 } },
             columns,
@@ -216,6 +217,18 @@ export default {
         }
     },
     methods: {
+        search(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return
+                }
+                console.log('Received values of form: ', values)
+            })
+        },
+        reset() {
+            this.form.resetFields()
+        },
         showAddModal() {
             this.visibleObj.addvisible = true
         }

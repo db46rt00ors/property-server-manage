@@ -1,25 +1,35 @@
 <template>
-  <div>
+  <div class="content">
     <a-row>
-      <a-form-model :model="form" layout="inline">
-        <a-form-model-item label="选择楼盘">
-          <a-select v-model="form.region" placeholder="选择楼盘" class="select">
+      <a-form :form="form" layout="inline">
+        <a-form-item label="选择楼盘">
+          <a-select
+            @change="estateChange"
+            v-decorator="['choose_estate']"
+            placeholder="选择楼盘"
+            class="select"
+          >
             <a-select-option value="1">楼盘1</a-select-option>
             <a-select-option value="2">楼盘2</a-select-option>
             <a-select-option value="3">楼盘3</a-select-option>
             <a-select-option value="4">楼盘4</a-select-option>
           </a-select>
-        </a-form-model-item>
-        <a-form-model-item label="收费方式">
-          <a-select v-model="form.ownerType" placeholder="全部" class="select">
+        </a-form-item>
+        <a-form-item label="收费方式">
+          <a-select
+            placeholder="全部"
+            class="select"
+            @change="ownerTypeChange"
+            v-decorator="['owner_type']"
+          >
             <a-select-option value="1">全部</a-select-option>
             <a-select-option value="2">按住户</a-select-option>
             <a-select-option value="3">按房屋面积</a-select-option>
             <a-select-option value="4">按使用面积</a-select-option>
             <a-select-option value="5">按阁楼面积</a-select-option>
           </a-select>
-        </a-form-model-item>
-      </a-form-model>
+        </a-form-item>
+      </a-form>
     </a-row>
     <a-row class="setting">
       <a-button type="primary" icon="plus-circle" @click="showAddModal">新增</a-button>
@@ -196,12 +206,7 @@ export default {
                 addvisible: false,
                 importexcelvisible: false
             },
-            form: {
-                housecode: '',
-                region: undefined,
-                retrievingcontent: '',
-                ownerType: undefined
-            },
+            form: this.$form.createForm(this),
             pagination: {
                 defaultPageSize: 10,
                 showTotal: total => `共 ${total} 条数据`,
@@ -235,6 +240,12 @@ export default {
         }
     },
     methods: {
+        estateChange(val) {
+            console.log(val)
+        },
+        ownerTypeChange(val) {
+            console.log(val)
+        },
         paginationChange(pagination, filters, sorter) {
             console.log('params', pagination, filters, sorter)
         },

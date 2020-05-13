@@ -1,55 +1,57 @@
 <template>
   <div class="content">
     <a-row>
-      <a-form-model :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-form :form="form" :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-row>
-          <a-col :span="4">
-            <a-form-model-item label="选择房产">
-              <a-select>
-                <a-select-option value="1">Zone one</a-select-option>
-                <a-select-option value="2">Zone two</a-select-option>
+          <a-col :span="6">
+            <a-form-item label="选择房产">
+              <a-select v-decorator="['choose_property']">
+                <a-select-option value="1">中东首座</a-select-option>
+                <a-select-option value="2">盈科大厦</a-select-option>
               </a-select>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
-          <a-col :span="4">
-            <a-form-model-item label="楼宇">
-              <a-select>
-                <a-select-option value="1">Zone one</a-select-option>
-                <a-select-option value="2">Zone two</a-select-option>
+          <a-col :span="6">
+            <a-form-item label="楼宇">
+              <a-select v-decorator="['buildings']">
+                <a-select-option value="1">1号楼</a-select-option>
+                <a-select-option value="2">2号楼</a-select-option>
               </a-select>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
-          <a-col :span="4">
-            <a-form-model-item label="单元/楼层">
-              <a-select>
-                <a-select-option value="1">Zone one</a-select-option>
-                <a-select-option value="2">Zone two</a-select-option>
+          <a-col :span="6">
+            <a-form-item label="单元/楼层">
+              <a-select v-decorator="['unit']">
+                <a-select-option value="1">1单元</a-select-option>
+                <a-select-option value="2">2单元</a-select-option>
               </a-select>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
         </a-row>
         <a-row>
-          <a-col :span="4">
-            <a-form-model-item label="房间">
-              <a-select>
-                <a-select-option value="1">Zone one</a-select-option>
-                <a-select-option value="2">Zone two</a-select-option>
+          <a-col :span="6">
+            <a-form-item label="房间">
+              <a-select v-decorator="['rooms']">
+                <a-select-option value="101">101</a-select-option>
+                <a-select-option value="102">102</a-select-option>
+                <a-select-option value="201">201</a-select-option>
+                <a-select-option value="202">202</a-select-option>
               </a-select>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
-          <a-col :span="4">
-            <a-form-model-item label="关键词">
-              <a-input />
-            </a-form-model-item>
+          <a-col :span="6">
+            <a-form-item label="关键词">
+              <a-input v-decorator="['keyword']" />
+            </a-form-item>
           </a-col>
-          <a-col :span="8" class="setting">
-            <a-button>查询</a-button>
+          <a-col :span="10" class="setting">
+            <a-button style="margin-left:8%" @click="search">查询</a-button>
             <a-button>清空</a-button>
             <a-button @click="add">增加</a-button>
             <a-button>导出</a-button>
           </a-col>
         </a-row>
-      </a-form-model>
+      </a-form>
     </a-row>
     <a-row>
       <a-table :columns="columns" :dataSource="data">
@@ -103,6 +105,7 @@ const columns = [
 export default {
     data() {
         return {
+            form: this.$form.createForm(this),
             labelCol: { span: 8 },
             wrapperCol: { span: 15 },
             columns,
@@ -139,6 +142,15 @@ export default {
         }
     },
     methods: {
+        search(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return
+                }
+                console.log('Received values of form: ', values)
+            })
+        },
         edit(record) {
             this.editObj.editrecord.estate = record.estate
             this.editObj.editVisible = true
