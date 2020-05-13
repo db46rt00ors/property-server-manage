@@ -1,5 +1,5 @@
 <template>
-  <a-row class="conventional-content">
+  <a-row class="content">
     <a-form layout="inline" :form="form">
       <a-row type="flex" justify="space-between" class="form-row">
         <a-col :span="6">
@@ -220,9 +220,5 @@ export default {
 .ant-col {
     line-height: 40px;
     height: 40px;
-}
-.conventional-content {
-    height: 500px;
-    background: #fff;
 }
 </style>

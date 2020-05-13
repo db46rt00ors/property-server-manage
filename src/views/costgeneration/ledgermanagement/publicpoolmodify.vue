@@ -1,7 +1,7 @@
 <template>
-  <a-row class="public-content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="space-between" class="form-row">
+  <a-row class="content">
+    <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select>
@@ -58,7 +58,7 @@
         </a-col>
       </a-row>
       <a-row>
-        <a-col class="setting mgt-10">
+        <a-col class="setting mgt-10 mgb-10">
           <a-button type="primary" icon="search" class="mgl-10">查询</a-button>
           <a-button type="primary" icon="reload" class="mgl-10">重置</a-button>
         </a-col>
@@ -148,6 +148,8 @@ export default {
     data() {
         return {
             form: this.$form.createForm(this),
+            labelCol: { span: 8 },
+            wrapperCol: { span: 14 },
             pagination: {
                 defaultPageSize: 10,
                 showTotal: total => `共 ${total} 条数据`,
@@ -199,28 +201,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
+.content {
+    /deep/.ant-calendar-picker {
+        width: 100%;
     }
 }
 .ant-form-item {
     margin-top: 5px;
     margin-bottom: 0px;
-    width: 90%;
 }
 .ant-col {
     line-height: 40px;
     height: 40px;
-}
-.public-content {
-    height: 500px;
 }
 </style>

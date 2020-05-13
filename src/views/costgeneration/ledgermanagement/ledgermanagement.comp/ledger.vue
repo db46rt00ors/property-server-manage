@@ -1,5 +1,5 @@
 <template>
-  <a-row class="ledger-content">
+  <a-row class="content">
     <a-form :form="form" :labelCol="labelCol" :wrapperCol="wrapperCol">
       <a-row>
         <a-col :span="6">
@@ -210,10 +210,8 @@ export default {
     line-height: 40px;
     height: 40px;
 }
-.ledger-content {
-    height: 500px;
-    background-color: #fff;
-    padding: 20px;
+.content {
+  padding-top: 0;
     /deep/.ant-calendar-picker {
         width: 100%;
     }
