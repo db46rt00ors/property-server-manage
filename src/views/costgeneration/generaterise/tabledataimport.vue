@@ -23,13 +23,13 @@
         </a-row>
         <a-row type="flex" justify="start">
           <a-col :offset="1">
-            <a-form-model-item label="选择Excel文档" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
+            <a-form-item label="选择Excel文档" :labelCol="{span: 10}" :wrapperCol="{span: 14}">
               <a-upload :fileList="fileList" :remove="handleRemove" :beforeUpload="beforeUpload">
                 <a-button>
                   <a-icon type="upload" />选择上传文件
                 </a-button>
               </a-upload>
-            </a-form-model-item>
+            </a-form-item>
           </a-col>
           <a-col>
             <a-button

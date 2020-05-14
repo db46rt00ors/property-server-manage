@@ -68,7 +68,7 @@ export default {
             data,
             columns,
             penaltyobj: {
-                visible: true,
+                visible: false,
                 record: null
             }
         }

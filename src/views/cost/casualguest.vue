@@ -28,38 +28,38 @@
         <a-form :form="form" :label-col="{ span: 10 }" :wrapper-col="{ span: 14 }">
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="选择楼盘" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+              <a-form-item label="选择楼盘" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
                 <a-input></a-input>
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="8">
-              <a-form-model-item label="费项名称">
+              <a-form-item label="费项名称">
                 <a-input></a-input>
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
             <a-col :span="8">
-              <a-form-model-item label="单位价格">
+              <a-form-item label="单位价格">
                 <a-input></a-input>
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="上级费项" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+              <a-form-item label="上级费项" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
                 <a-select placeholder="please select your zone" @change="feesChange">
                   <a-select-option value="1">121小区</a-select-option>
                   <a-select-option value="2">122小区</a-select-option>
                 </a-select>
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="16">
-              <a-form-model-item label="费项说明" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
+              <a-form-item label="费项说明" :labelCol="{span: 5}" :wrapperCol="{span: 19}">
                 <a-input />
-              </a-form-model-item>
+              </a-form-item>
             </a-col>
           </a-row>
         </a-form>

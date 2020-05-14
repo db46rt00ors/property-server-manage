@@ -1,12 +1,12 @@
 <template>
   <div>
     <a-row>
-      <a-form-model :model="form" layout="inline">
-        <a-form-model-item label="房间编码">
-          <a-input v-model="form.housecode" />
-        </a-form-model-item>
-        <a-form-model-item label="快速检索">
-          <a-select v-model="form.region" placeholder="业主编码" class="select">
+      <a-form :form="form" layout="inline">
+        <a-form-item label="房间编码">
+          <a-input v-decorator="['housecode']"/>
+        </a-form-item>
+        <a-form-item label="快速检索">
+          <a-select placeholder="业主编码" class="select" v-decorator="['quick_search_ownercode']">
             <a-select-option value="1">业主编码</a-select-option>
             <a-select-option value="2">业主姓名</a-select-option>
             <a-select-option value="3">证件号码</a-select-option>
@@ -18,19 +18,19 @@
             <a-select-option value="9">紧急联系人</a-select-option>
             <a-select-option value="0">备注</a-select-option>
           </a-select>
-        </a-form-model-item>
-        <a-form-model-item>
-          <a-input v-model="form.retrievingcontent" />
+        </a-form-item>
+        <a-form-item>
+          <a-input v-decorator="['retrievingcontent']"/>
           <a-icon type="search" class="retrievingcontent-icon" />
-        </a-form-model-item>
-        <a-form-model-item label="快速检索">
-          <a-select v-model="form.ownerType" placeholder="全部业主" class="select">
+        </a-form-item>
+        <a-form-item label="快速检索">
+          <a-select placeholder="全部业主" class="select" v-decorator="['quick_search_ownertype']">
             <a-select-option value="1">全部业主</a-select-option>
             <a-select-option value="2">正式业主</a-select-option>
             <a-select-option value="3">临时业主</a-select-option>
           </a-select>
-        </a-form-model-item>
-      </a-form-model>
+        </a-form-item>
+      </a-form>
     </a-row>
     <a-row class="setting">
       <a-button type="primary" icon="plus-circle" @click="showAddModal">新增</a-button>&nbsp;
@@ -152,12 +152,7 @@ export default {
                 addvisible: false,
                 importexcelvisible: false
             },
-            form: {
-                housecode: '',
-                region: undefined,
-                retrievingcontent: '',
-                ownerType: undefined
-            },
+            form: this.$form.createForm(this),
             pagination: {
                 defaultPageSize: 10,
                 showTotal: total => `共 ${total} 条数据`,

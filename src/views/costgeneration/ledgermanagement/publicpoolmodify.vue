@@ -1,7 +1,7 @@
 <template>
-  <a-row class="public-content">
-    <a-form layout="inline" :form="form">
-      <a-row type="flex" justify="space-between" class="form-row">
+  <a-row class="content">
+    <a-form :form="form" :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择楼盘">
             <a-select
@@ -37,7 +37,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row class="form-row">
+      <a-row>
         <a-col :span="6">
           <a-form-item label="选择费项">
             <a-select>
@@ -83,144 +83,137 @@
 <script>
 import publicEdit from './publicpoolmodify.dialog/edit'
 const columns = [
-    {
-        width: '12%',
-        align: 'center',
-        dataIndex: 'property',
-        key: 'property',
-        title: '所属楼盘',
-        scopedSlots: { customRender: 'property' }
-    },
-    {
-        align: 'center',
-        title: '台账名称',
-        dataIndex: 'ledger_name',
-        key: 'ledger_name'
-    },
-    {
-        align: 'center',
-        title: '费用名称',
-        dataIndex: 'fee_name',
-        key: 'fee_name'
-    },
-    {
-        align: 'center',
-        title: '生成人',
-        dataIndex: 'generator',
-        key: 'generator'
-    },
-    {
-        align: 'center',
-        title: '生成日期',
-        dataIndex: 'generator_date',
-        key: 'generator_date'
-    },
-    {
-        width: '25%',
-        align: 'center',
-        title: '备注',
-        dataIndex: 'remark',
-        key: 'remark'
-    }
+  {
+    width: '12%',
+    align: 'center',
+    dataIndex: 'property',
+    key: 'property',
+    title: '所属楼盘',
+    scopedSlots: { customRender: 'property' }
+  },
+  {
+    align: 'center',
+    title: '台账名称',
+    dataIndex: 'ledger_name',
+    key: 'ledger_name'
+  },
+  {
+    align: 'center',
+    title: '费用名称',
+    dataIndex: 'fee_name',
+    key: 'fee_name'
+  },
+  {
+    align: 'center',
+    title: '生成人',
+    dataIndex: 'generator',
+    key: 'generator'
+  },
+  {
+    align: 'center',
+    title: '生成日期',
+    dataIndex: 'generator_date',
+    key: 'generator_date'
+  },
+  {
+    width: '25%',
+    align: 'center',
+    title: '备注',
+    dataIndex: 'remark',
+    key: 'remark'
+  }
 ]
 
 const data = [
-    {
-        key: '1',
-        property: '中东首座',
-        ledger_name: 'A04-wy卫生费20120324',
-        fee_name: '水费(普通按月)',
-        generator: '系统管理员',
-        generator_date: '2020-04-22',
-        remark: 'remark'
-    },
-    {
-        key: '2',
-        property: '中东首座',
-        ledger_name: 'A04-wy水费(普通按月)20120324',
-        fee_name: '卫生费',
-        generator: '物业企业版用户',
-        generator_date: '2020-04-22',
-        remark: 'remark'
-    }
+  {
+    key: '1',
+    property: '中东首座',
+    ledger_name: 'A04-wy卫生费20120324',
+    fee_name: '水费(普通按月)',
+    generator: '系统管理员',
+    generator_date: '2020-04-22',
+    remark: 'remark'
+  },
+  {
+    key: '2',
+    property: '中东首座',
+    ledger_name: 'A04-wy水费(普通按月)20120324',
+    fee_name: '卫生费',
+    generator: '物业企业版用户',
+    generator_date: '2020-04-22',
+    remark: 'remark'
+  }
 ]
 export default {
-    data() {
-        return {
-            form: this.$form.createForm(this),
-            pagination: {
-                defaultPageSize: 10,
-                showTotal: total => `共 ${total} 条数据`,
-                showQuickJumper: true,
-                showSizeChanger: true,
-                pageSizeOptions: ['5', '10', '15', '20'],
-                onShowSizeChange: (current, pageSize) => (this.pageSize = pageSize)
-            },
-            data,
-            columns,
-            selectedRows: [],
-            publicObj: {
-                visible: false
-            }
-        }
-    },
-    computed: {
-        rowSelection() {
-            return {
-                onChange: (selectedRowKeys, selectedRows) => {
-                    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
-                },
-                onSelect: (record, selected, selectedRows) => {
-                    console.log(record, selected, selectedRows)
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.selectedRows = selectedRows
-                },
-                onSelectAll: (selected, selectedRows, changeRows) => {
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.selectedRows = selectedRows
-                    console.log(selected, selectedRows, changeRows)
-                }
-            }
-        }
-    },
-    methods: {
-        paginationChange(pagination, filters, sorter) {
-            console.log('params', pagination, filters, sorter)
-        },
-        edit(record) {
-            this.publicObj.visible = true
-            this.publicObj.ledger_name = record.ledger_name
-        }
-    },
-    components: {
-        publicEdit
+  data() {
+    return {
+      labelCol: { lg: { span: 8 }, sm: { span: 8 } },
+      wrapperCol: { lg: { span: 16 }, sm: { span: 16 } },
+      form: this.$form.createForm(this),
+      pagination: {
+        defaultPageSize: 10,
+        showTotal: total => `共 ${total} 条数据`,
+        showQuickJumper: true,
+        showSizeChanger: true,
+        pageSizeOptions: ['5', '10', '15', '20'],
+        onShowSizeChange: (current, pageSize) => (this.pageSize = pageSize)
+      },
+      data,
+      columns,
+      selectedRows: [],
+      publicObj: {
+        visible: false
+      }
     }
+  },
+  computed: {
+    rowSelection() {
+      return {
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
+        },
+        onSelect: (record, selected, selectedRows) => {
+          console.log(record, selected, selectedRows)
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.selectedRows = selectedRows
+        },
+        onSelectAll: (selected, selectedRows, changeRows) => {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.selectedRows = selectedRows
+          console.log(selected, selectedRows, changeRows)
+        }
+      }
+    }
+  },
+  methods: {
+    paginationChange(pagination, filters, sorter) {
+      console.log('params', pagination, filters, sorter)
+    },
+    edit(record) {
+      this.publicObj.visible = true
+      this.publicObj.ledger_name = record.ledger_name
+    }
+  },
+  components: {
+    publicEdit
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.form-row {
-    /deep/.ant-form-item-label {
-        width: 7em;
-        text-align: right;
-    }
-    /deep/.ant-form-item-control-wrapper {
-        width: 70%;
-        /deep/.ant-calendar-picker {
-            width: 100%;
-        }
-    }
-}
 .ant-form-item {
-    margin-top: 5px;
-    margin-bottom: 0px;
-    width: 90%;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  width: 90%;
 }
 .ant-col {
-    line-height: 40px;
-    height: 40px;
+  line-height: 40px;
+  height: 40px;
 }
-.public-content {
-    height: 500px;
+.content {
+  height: 500px;
+  /deep/.ant-calendar-picker {
+    width: 100%;
+  }
 }
 </style>
