@@ -164,10 +164,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.content {
-  background-color: #fff;
-  padding: 20px;
-}
 .ant-form-item {
   margin-bottom: 0;
 }

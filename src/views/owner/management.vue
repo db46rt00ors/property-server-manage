@@ -61,13 +61,13 @@
           <a-row class="setting">
             <a-col class="left">
               <a-button type="primary" icon="search" @click="search">查询</a-button>
-              <a-button type="primary" icon="reload">重置</a-button>
+              <a-button type="primary" icon="reload" @click="reset">重置</a-button>
               <a-button type="primary" icon="plus-circle" @click="showAddModal">新增</a-button>
               <a-button type="primary" icon="minus-circle">删除</a-button>
               <a-button type="primary" icon="file">导出</a-button>
             </a-col>
             <a-col class="right">
-              <a-input></a-input>
+              <a-input v-decorator="['locate_the_room']" />
               <a-button type="primary">定位房间</a-button>
             </a-col>
           </a-row>
@@ -173,11 +173,9 @@ for (let i = 0; i < 100; i++) {
     dateofapplication: mockjs2.Random.date('yyyy-MM-dd'),
     decorationdeposit: _.random(100000, 999999),
     liquidateddamages: _.random(1000, 50000),
-    // status: ['待审批'],
     status: mockjs2.mock({
       'array|1': ['已作废', '待审批', '已验收', '审批通过']
     }),
-    // decorationcontent: '将客厅非承重墙打掉，增加采光',
     decorationcontent: _.sample(
       [
         '申请对客厅和卫生间精装修一下',
@@ -224,6 +222,9 @@ export default {
         }
       })
     },
+    reset() {
+            this.form.resetFields()
+        },
     showAddModal() {
       this.visibleObj.addvisible = true
     }
@@ -237,13 +238,10 @@ export default {
 
 <style lang='less' scoped>
 .content {
-  background-color: #fff;
-  padding: 20px;
-  height: 100%;
-  .table-content {
-    .setting {
-      margin: 10px 0;
-    }
+    .table-content {
+        .setting {
+            margin: 10px 0;
+        }
 
     button {
       margin-left: 10px;

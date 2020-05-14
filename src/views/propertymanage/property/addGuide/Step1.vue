@@ -88,9 +88,7 @@
           <a-input />
         </a-form-model-item>
       </a-row>
-      <a-row>
-        <div style="text-align:center;">----开发商信息----</div>
-      </a-row>
+      <a-divider>开发商信息</a-divider>
       <a-row>
         <a-col :span="12">
           <a-form-model-item label="公司名称" :labelCol="labelCol" :wrapperCol="wrapperCol">
@@ -223,6 +221,6 @@ export default {
     }
 }
 .ant-form-item {
-    margin-bottom: 8px;
+    margin: 4px 0;
 }
 </style>

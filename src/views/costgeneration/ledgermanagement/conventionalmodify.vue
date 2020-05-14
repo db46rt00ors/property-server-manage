@@ -31,8 +31,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .content{
-    padding: 20px;
-    background-color: #fff;
-  }
 </style>

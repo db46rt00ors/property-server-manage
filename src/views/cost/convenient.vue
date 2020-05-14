@@ -147,9 +147,6 @@ export default {
 
 <style scoped lang="less">
 .content {
-    background-color: #fff;
-    padding: 20px;
-    height: 800px;
     max-height: 800px;
     .setting {
         margin: 10px 0;

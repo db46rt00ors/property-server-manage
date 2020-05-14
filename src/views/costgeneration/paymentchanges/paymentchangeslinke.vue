@@ -183,9 +183,6 @@ export default {
 
 <style scoped lang="less">
 .content {
-    height: 800px;
-    background-color: #fff;
-    padding: 10px;
     /deep/.ant-calendar-picker {
             width: 100%;
         }

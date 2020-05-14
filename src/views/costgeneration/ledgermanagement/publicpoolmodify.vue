@@ -58,7 +58,7 @@
         </a-col>
       </a-row>
       <a-row>
-        <a-col class="setting mgt-10">
+        <a-col class="setting mgt-10 mgb-10">
           <a-button type="primary" icon="search" class="mgl-10">查询</a-button>
           <a-button type="primary" icon="reload" class="mgl-10">重置</a-button>
         </a-col>
@@ -201,19 +201,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.content {
+    /deep/.ant-calendar-picker {
+        width: 100%;
+    }
+}
 .ant-form-item {
-  margin-top: 5px;
-  margin-bottom: 0px;
-  width: 90%;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 .ant-col {
   line-height: 40px;
   height: 40px;
-}
-.content {
-  height: 500px;
-  /deep/.ant-calendar-picker {
-    width: 100%;
-  }
 }
 </style>

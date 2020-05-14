@@ -256,10 +256,14 @@ export default {
 
 <style lang='less' scoped>
 .content {
+<<<<<<< HEAD
   background-color: #fff;
   padding: 20px;
   height: 100%;
   .table-content {
+=======
+    .table-content {
+>>>>>>> 64a3e92fb3c989fc2181fe88267b470cddb3e101
     .setting {
       margin: 10px 0;
     }

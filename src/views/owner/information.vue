@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <a-row>
       <a-form :form="form" layout="inline">
         <a-form-item label="房间编码">
@@ -186,6 +186,15 @@ export default {
         }
     },
     methods: {
+        search(e) {
+            e.preventDefault()
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return
+                }
+                console.log('Received values of form: ', values)
+            })
+        },
         paginationChange(pagination, filters, sorter) {
             console.log('params', pagination, filters, sorter)
         },
