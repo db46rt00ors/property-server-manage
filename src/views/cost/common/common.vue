@@ -3,16 +3,7 @@
     <a-row>
       <a-form :form="form" layout="inline">
         <a-form-item label="选择楼盘">
-<<<<<<< HEAD
           <a-select placeholder="选择楼盘" class="select" v-decorator="['select_estate']">
-=======
-          <a-select
-            @change="estateChange"
-            v-decorator="['choose_estate']"
-            placeholder="选择楼盘"
-            class="select"
-          >
->>>>>>> 64a3e92fb3c989fc2181fe88267b470cddb3e101
             <a-select-option value="1">楼盘1</a-select-option>
             <a-select-option value="2">楼盘2</a-select-option>
             <a-select-option value="3">楼盘3</a-select-option>
@@ -23,15 +14,10 @@
           <a-select
             placeholder="全部"
             class="select"
-<<<<<<< HEAD
             v-decorator="[
               'ownerType',
               {initialValue: '全部'}
             ]"
-=======
-            @change="ownerTypeChange"
-            v-decorator="['owner_type']"
->>>>>>> 64a3e92fb3c989fc2181fe88267b470cddb3e101
           >
             <a-select-option value="1">全部</a-select-option>
             <a-select-option value="2">按住户</a-select-option>
@@ -211,7 +197,6 @@ for (let i = 0; i < 200; i++) {
 }
 
 export default {
-<<<<<<< HEAD
   data() {
     return {
       visibleObj: {
@@ -247,26 +232,6 @@ export default {
           // eslint-disable-next-line vue/no-side-effects-in-computed-properties
           this.selectedRows = selectedRows
           console.log(selected, selectedRows, changeRows)
-=======
-    data() {
-        return {
-            visibleObj: {
-                addvisible: false,
-                importexcelvisible: false
-            },
-            form: this.$form.createForm(this),
-            pagination: {
-                defaultPageSize: 10,
-                showTotal: total => `共 ${total} 条数据`,
-                showQuickJumper: true,
-                showSizeChanger: true,
-                pageSizeOptions: ['5', '10', '15', '20'],
-                onShowSizeChange: (current, pageSize) => (this.pageSize = pageSize)
-            },
-            data,
-            columns,
-            selectedRows: []
->>>>>>> 64a3e92fb3c989fc2181fe88267b470cddb3e101
         }
       }
     }
@@ -278,7 +243,6 @@ export default {
     showAddModal() {
       this.visibleObj.addvisible = true
     },
-<<<<<<< HEAD
     showImportExcelModal() {
       this.visibleObj.importexcelvisible = true
     },
@@ -291,36 +255,6 @@ export default {
           return new Promise((resolve, reject) => {
             setTimeout(Math.random() > 0.5 ? resolve : reject, 1000)
           }).catch(() => console.log('Oops errors!'))
-=======
-    methods: {
-        estateChange(val) {
-            console.log(val)
-        },
-        ownerTypeChange(val) {
-            console.log(val)
-        },
-        paginationChange(pagination, filters, sorter) {
-            console.log('params', pagination, filters, sorter)
-        },
-        showAddModal() {
-            this.visibleObj.addvisible = true
-        },
-        showImportExcelModal() {
-            this.visibleObj.importexcelvisible = true
-        },
-        start() {
-            console.log(this.selectedRows)
-            this.$confirm({
-                title: '确认对话框',
-                content: `确认要处理选中的${this.selectedRows.length}项记录吗？`,
-                onOk() {
-                    return new Promise((resolve, reject) => {
-                        setTimeout(Math.random() > 0.5 ? resolve : reject, 1000)
-                    }).catch(() => console.log('Oops errors!'))
-                },
-                onCancel() {}
-            })
->>>>>>> 64a3e92fb3c989fc2181fe88267b470cddb3e101
         },
         onCancel() {}
       })
