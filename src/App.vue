@@ -11,17 +11,17 @@ import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import { AppDeviceEnquire } from '@/utils/mixin'
 
 export default {
-    mixins: [AppDeviceEnquire],
-    data() {
-        return {
-            locale: zhCN
-        }
-    },
-    mounted() {}
+  mixins: [AppDeviceEnquire],
+  data() {
+    return {
+      locale: zhCN
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
-  #app,.ant-modal-root{
-    min-width: 1100px;
-  }
+#app,
+.ant-modal-root {
+  min-width: 1100px;
+}
 </style>

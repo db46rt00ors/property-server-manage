@@ -16,8 +16,9 @@ import './permission' // permission control
 import './utils/filter' // global filter
 import './components/global.less'
 import './utils/public.less'
+import moment from 'moment'
 import { Dialog } from '@/components'
-
+Vue.prototype.$moment = moment
 Vue.config.productionTip = false
 
 // mount axios Vue.$http and this.$http
